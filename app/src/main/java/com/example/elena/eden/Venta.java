@@ -9,14 +9,13 @@ import android.widget.TextView;
 
 public class Venta extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
     BottomNavigationView bottomNavigationView;
-    TextView textView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venta);
         bottomNavigationView= (BottomNavigationView) findViewById(R.id.menunave);
-        textView = (TextView) findViewById(R.id.id1);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
