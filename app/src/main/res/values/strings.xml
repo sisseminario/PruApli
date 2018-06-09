@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Eden</string>
+    <string name="buscar">Buscar</string>
+    <string name="mapa">Ver Mapa</string>
+    <string name="lista">Ver lista</string>
+</resources>

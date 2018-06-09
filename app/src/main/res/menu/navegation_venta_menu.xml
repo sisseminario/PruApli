@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/busqueve_id"
+        android:icon="@drawable/navebus"
+        android:title="@string/buscar"
+        android:orderInCategory="3">
+
+    </item>
+    <item
+        android:id="@+id/mmapa_id"
+        android:icon="@drawable/navloca"
+        android:title="@string/mapa"
+        android:orderInCategory="4">
+
+    </item>
+    <item
+        android:id="@+id/lista"
+        android:icon="@drawable/lista"
+        android:title="@string/lista"
+        android:orderInCategory="2">
+
+    </item>
+</menu>
