@@ -16,21 +16,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home"
-            android:theme="@style/ThemeHome"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Venta"
-            android:theme="@style/ThemeVenta"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Alquiler"
-            android:theme="@style/ThemeAlquiler"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Anticretico"
-            android:theme="@style/ThemeAnticretico"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Contactos"
-            android:theme="@style/ThemeContacto"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Home"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/ThemeHome" />
+        <activity
+            android:name=".Venta"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/ThemeVenta" />
+        <activity
+            android:name=".Alquiler"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/ThemeAlquiler" />
+        <activity
+            android:name=".Anticretico"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/ThemeAnticretico" />
+        <activity
+            android:name=".Contactos"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/ThemeContacto" />
+        <activity android:name=".Venta_lista" />
+        <activity android:name=".Venta_buscar"></activity>
     </application>
 
 </manifest>

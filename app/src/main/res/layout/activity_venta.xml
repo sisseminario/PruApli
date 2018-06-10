@@ -6,36 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Venta">
     <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        ></FrameLayout>
-
-    <android.support.constraint.ConstraintLayout
+        android:id="@+id/fragment_contra"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/menunave"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-
-            android:background="?android:windowBackground"
-            android:backgroundTint="@color/sobrecabeza"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:menu="@menu/navegation_venta_menu"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"></android.support.design.widget.BottomNavigationView>
-    </android.support.constraint.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/boton_vnave"/>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/boton_vnave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navegation_venta_menu"
+        android:background="@color/sobrecabeza"/>
 
 </RelativeLayout>
