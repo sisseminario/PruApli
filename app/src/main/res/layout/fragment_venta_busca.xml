@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Venta_listaFragment">
+    tools:context=".Venta_buscaFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/venta_lisfra"
-        android:text="listar"
+        android:id="@+id/venta_busfra"
+        android:text="Busqueda"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
-
 </FrameLayout>

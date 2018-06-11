@@ -4,7 +4,8 @@
     <item
         android:id="@+id/busqueve_id"
         android:icon="@drawable/navebus"
-        android:title="@string/buscar">
+        android:title="@string/buscar"
+        android:orderInCategory="2">
 
     </item>
     <item
@@ -19,7 +20,7 @@
         android:id="@+id/lista_id"
         android:icon="@drawable/lista"
         android:title="@string/lista"
-        android:orderInCategory="2">
+        >
 
     </item>
 </menu>

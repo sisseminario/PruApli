@@ -3,4 +3,8 @@
     <string name="buscar">Buscar</string>
     <string name="mapa">Ver Mapa</string>
     <string name="lista">Ver lista</string>
+    <string name="title_activity_mapas">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

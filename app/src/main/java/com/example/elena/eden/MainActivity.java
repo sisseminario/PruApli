@@ -75,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                Intent intent =new Intent(MainActivity.this,Mapas.class);
+                intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            }
+        });
     }
 
 }

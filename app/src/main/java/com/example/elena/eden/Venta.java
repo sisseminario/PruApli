@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class Venta extends AppCompatActivity {
+public class Venta extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
@@ -16,31 +16,38 @@ public class Venta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venta);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        BottomNavigationView bottomNav = findViewById(R.id.boton_vnave);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contra,new Venta_list());
-
+        BottomNavigationView navigation = findViewById(R.id.main_nav_v);
+        navigation.setOnNavigationItemSelectedListener(this);
+        loadFragment(new Venta_listaFragment());
 
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selecfrag = null;
-                    switch (item.getItemId()){
-                        case R.id.busqueve_id:
-                            selecfrag = new Venta_busca();
-                            break;
-                        case R.id.lista_id:
-                            selecfrag = new Venta_list();
-                            break;
+    private boolean loadFragment(Fragment fragment){
+        if (fragment != null){
+            getSupportFragmentManager()
+                    .beginTransaction().replace(R.id.main_ve,fragment).commit();
 
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contra,selecfrag).commit();
-                    return true;
-                }
-            };
 
+            return true;
+        }
+        return false;
+
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
+        switch (item.getItemId()){
+            case R.id.busqueve_id:
+                fragment =new Venta_buscaFragment();
+                break;
+            case R.id.lista_id:
+                fragment =new Venta_listaFragment();
+                break;
+
+
+        }
+
+        return loadFragment(fragment);
+    }
 
 
 

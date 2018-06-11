@@ -5,17 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Venta">
-    <FrameLayout
-        android:id="@+id/fragment_contra"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/boton_vnave"/>
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/boton_vnave"
+        android:id="@+id/main_nav_v"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/navegation_venta_menu"
-        android:background="@color/sobrecabeza"/>
+        android:layout_alignParentStart="true"
+        app:itemBackground="@color/sobrecabeza"
+
+        app:menu="@menu/navegation_venta_menu"/>
+
+    <FrameLayout
+        android:id="@+id/main_ve"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_nav_v"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+    </FrameLayout>
 
 </RelativeLayout>

@@ -3,7 +3,7 @@ package com.example.elena.eden;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Contactos extends AppCompatActivity {
+public class Contactos extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
