@@ -16,7 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class Mapas extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
+public class MpRegistroActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap;
     private Boolean isInadd = false;
@@ -99,3 +99,4 @@ public class Mapas extends FragmentActivity implements OnMapReadyCallback, Googl
     }
 
 }
+

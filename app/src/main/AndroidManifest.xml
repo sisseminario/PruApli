@@ -43,8 +43,10 @@
             android:name=".Contactos"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ThemeContacto" />
-      <!--  <activity android:name=".Venta_lista" />
-        <activity android:name=".Venta_buscar" />-->
+        <!--
+        <activity android:name=".Venta_lista" />
+        <activity android:name=".Venta_buscar" />
+        -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -59,8 +61,11 @@
 
         <activity
             android:name=".Mapas"
-            android:label="@string/title_activity_mapas"></activity>
-
+            android:label="@string/title_activity_mapas" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".MpRegistroActivity"
+            android:label="@string/title_activity_mp_registro"></activity>
     </application>
 
 </manifest>

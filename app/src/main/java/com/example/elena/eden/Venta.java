@@ -35,6 +35,7 @@ public class Venta extends AppCompatActivity implements BottomNavigationView.OnN
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
+
         switch (item.getItemId()){
             case R.id.busqueve_id:
                 fragment =new Venta_buscaFragment();
@@ -42,8 +43,9 @@ public class Venta extends AppCompatActivity implements BottomNavigationView.OnN
             case R.id.lista_id:
                 fragment =new Venta_listaFragment();
                 break;
-
-
+            case R.id.mp_registro:
+                fragment =new Blank();
+                break;
         }
 
         return loadFragment(fragment);

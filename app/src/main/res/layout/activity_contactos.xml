@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context=".Contactos">
-
 
     <TextView
         android:id="@+id/textView"
@@ -15,48 +13,152 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Registrate"
-        android:textColor="@color/negro"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Registar"
         android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/id_nom"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/area_nombre"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="79dp"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="textPersonName" />
+        android:layout_above="@+id/area_telefono"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/id_corre"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/img_cliente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_person" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:orientation="horizontal"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/campo_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_nombre"
+                android:inputType="text"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/area_telefono"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="157dp"
-        android:ems="10"
-        android:hint="Correo"
-        android:inputType="textPersonName" />
+        android:layout_above="@+id/area_correo"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/id_pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:ems="10"
-        android:hint="Contrseña"
-        android:inputType="textPassword" />
+        <ImageView
+            android:id="@+id/img_correo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_phone" />
 
-    <Button
-        android:id="@+id/id_regis"
-        android:layout_width="146dp"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp">
+
+            <EditText
+                android:id="@+id/campo_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_telefono"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/area_correo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="191dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_correo"
+            android:layout_column="0"
+            android:layout_gravity="center_vertical"
+            android:layout_row="2"
+            android:src="@drawable/ic_correo" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_marginLeft="32dp"
+            android:layout_row="2"
+            app:errorEnabled="true"
+            app:hintTextAppearance="@style/Hint">
+
+            <EditText
+                android:id="@+id/campo_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_correo"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <!-- Bottom Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/boton_cancelar"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/boton_aceptar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/darvioleta"
+            android:text="@string/accion_aceptar"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googlebutton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="145dp"
-        android:text="Registrar" />
+        android:layout_marginBottom="75dp"></com.google.android.gms.common.SignInButton>
 
 </RelativeLayout>
