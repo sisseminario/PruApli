@@ -1,22 +1,17 @@
 package com.example.elena.eden;
 
-
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+public class Registro_casa extends AppCompatActivity {
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Form_propiFragment extends Fragment {
     Spinner sp_estado;
     Spinner sp_ciudades;
     Spinner sp_tipopropi;
@@ -25,17 +20,38 @@ public class Form_propiFragment extends Fragment {
     String[] tipopropiedad;
     private boolean isFirstTime = true;
 
-     public Form_propiFragment() {
-        // Required empty public constructor
-    }
+    Button camara;
+    Button mapa;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_registro_casa, container, false);
-        sp_estado = (Spinner) view.findViewById(R.id.menu_estado);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registro_casa);
+
+        //Botones
+        camara = (Button)findViewById(R.id.boton_cam);
+        camara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent camara = new Intent(Registro_casa.this, Home_camara.class);
+                startActivity(camara);
+            }
+        });
+
+        mapa = (Button)findViewById(R.id.boton_Mapa);
+        mapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapa = new Intent(Registro_casa.this, Home_mapa.class);
+                startActivity(mapa);
+            }
+        });
+
+        ///
+
+        sp_estado = (Spinner) findViewById(R.id.menu_estado);
         estados = getResources().getStringArray(R.array.lista_estado);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,estados);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_spinner_item,estados);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_estado.setAdapter(adapter);
         sp_estado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -45,7 +61,7 @@ public class Form_propiFragment extends Fragment {
                     isFirstTime = false;
                 }
                 else {
-                    Toast.makeText(getContext(),estados[position], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),estados[position], Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -54,9 +70,9 @@ public class Form_propiFragment extends Fragment {
 
             }
         });
-        sp_ciudades = (Spinner) view.findViewById(R.id.lista_ciu);
+        sp_ciudades = (Spinner) findViewById(R.id.lista_ciu);
         ciudades = getResources().getStringArray(R.array.lista_ciudades);
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,ciudades);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_spinner_item,ciudades);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_ciudades.setAdapter(adapter1);
         sp_ciudades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -66,7 +82,7 @@ public class Form_propiFragment extends Fragment {
                     isFirstTime = false;
                 }
                 else {
-                    Toast.makeText(getContext(),ciudades[position], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),ciudades[position], Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -75,9 +91,9 @@ public class Form_propiFragment extends Fragment {
 
             }
         });
-        sp_tipopropi = (Spinner) view.findViewById(R.id.lista_tipovivienda);
+        sp_tipopropi = (Spinner) findViewById(R.id.lista_tipovivienda);
         tipopropiedad = getResources().getStringArray(R.array.lista_tipovivenda);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,tipopropiedad);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_spinner_item,tipopropiedad);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_tipopropi.setAdapter(adapter2);
         sp_tipopropi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -87,7 +103,7 @@ public class Form_propiFragment extends Fragment {
                     isFirstTime = false;
                 }
                 else {
-                    Toast.makeText(getContext(),tipopropiedad[position], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),tipopropiedad[position], Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -96,7 +112,6 @@ public class Form_propiFragment extends Fragment {
 
             }
         });
-        return view;
     }
 
 }

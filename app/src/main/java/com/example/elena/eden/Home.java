@@ -8,29 +8,21 @@ import android.widget.Button;
 
 public class Home extends AppCompatActivity {
 
-    Button camara;
-    Button mapa;
+
+    Button insertar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        camara = (Button)findViewById(R.id.boton_cam);
-        camara.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent camara = new Intent(Home.this, Home_camara.class);
-                startActivity(camara);
-            }
-        });
 
-        mapa = (Button)findViewById(R.id.boton_Mapa);
-        mapa.setOnClickListener(new View.OnClickListener() {
+        insertar = (Button) findViewById(R.id.insertar);
+        insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mapa = new Intent(Home.this, Home_mapa.class);
-                startActivity(mapa);
+                Intent insertar = new Intent(Home.this,Registro_casa.class);
+                startActivity(insertar);
             }
         });
 
