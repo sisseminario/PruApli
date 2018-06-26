@@ -16,23 +16,21 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class MpRegistroActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
+public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap;
     private Boolean isInadd = false;
     private TextView txt_view;
     private ArrayList<Marker> list_markers;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mapas);
+        setContentView(R.layout.activity_home_mapa);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         txt_view = (TextView)this.findViewById(R.id.txt);
         list_markers = new ArrayList<Marker>();
 
@@ -66,8 +64,6 @@ public class MpRegistroActivity extends FragmentActivity implements OnMapReadyCa
         });
     }
 
-
-
     private void upDateMsnText() {
         if (isInadd == true){
             txt_view.setText("Add Mark");
@@ -75,7 +71,6 @@ public class MpRegistroActivity extends FragmentActivity implements OnMapReadyCa
             txt_view.setText("");
         }
     }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -97,6 +92,4 @@ public class MpRegistroActivity extends FragmentActivity implements OnMapReadyCa
         }
 
     }
-
 }
-

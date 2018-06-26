@@ -43,7 +43,7 @@ public class Venta extends AppCompatActivity implements BottomNavigationView.OnN
             case R.id.lista_id:
                 fragment =new Venta_listaFragment();
                 break;
-            case R.id.mp_registro:
+            case R.id.mmapa_id:
                 fragment =new Blank();
                 break;
         }

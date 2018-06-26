@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lista_tipovivenda">
+        <item>Casa</item>
+        <item>Terreno</item>
+        <item>Alojamiento</item>
+        <item>Vivienda Unifamiliar</item>
+        <item>Vivienda prefabricada</item>
+        <item>Barraca</item>
+        <item>Edificio</item>
+        <item>Apartamento</item>
+        <item>Mancion</item>
+
+    </string-array>
+</resources>

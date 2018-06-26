@@ -30,4 +30,8 @@
     <string name="title_activity_mapas2">Mapas2Activity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_mp_registro">Map</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_venta_camara">Venta_camara</string>
+    <string name="title_activity_home_camara">Home_camara</string>
+    <string name="title_activity_home_mapa">Map</string>
 </resources>
