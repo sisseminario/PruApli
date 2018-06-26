@@ -5,12 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-<<<<<<< HEAD
     android:fitsSystemWindows="true"
-    tools:context=".Contactos">
-
-
-=======
     tools:context=".Contactos">
 
     <TextView
@@ -166,6 +161,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="75dp"></com.google.android.gms.common.SignInButton>
->>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
 
 </RelativeLayout>

@@ -9,9 +9,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-<<<<<<< HEAD
-
-=======
     <string name="title_activity_login_result">LoginResult</string>
     <string name="no_log_in">No se peude iniciar secion</string>
     <string name="not_contactos">No se puede iniciar Secion</string>
@@ -37,5 +34,5 @@
     <string name="title_activity_venta_camara">Venta_camara</string>
     <string name="title_activity_home_camara">Home_camara</string>
     <string name="title_activity_home_mapa">Map</string>
->>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
+
 </resources>

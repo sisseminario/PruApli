@@ -44,9 +44,7 @@
         <item name="colorAccent">@color/darvioleta</item>
     </style>
 
-<<<<<<< HEAD
 
-=======
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -59,5 +57,5 @@
     <style name="Hint" parent="TextAppearance.Design.Hint">
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
->>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
+
 </resources>

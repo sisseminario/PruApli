@@ -1,11 +1,10 @@
 package com.example.elena.eden;
 
-<<<<<<< HEAD
-=======
+
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
->>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
+
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,14 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-<<<<<<< HEAD
 import java.util.regex.Pattern;
-
-public class Contactos extends AppCompatActivity  {
-
-
-=======
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -43,20 +35,11 @@ public class Contactos extends AppCompatActivity implements  GoogleApiClient.OnC
     private TextInputLayout tilCorreo;
     private EditText campoNombre,campoTelefono,campoCorreo;
 
-
->>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactos);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-<<<<<<< HEAD
-
-
-    }
-   }
-=======
         tilNombre = (TextInputLayout) findViewById(R.id.til_nombre);
         tilTelefono = (TextInputLayout) findViewById(R.id.til_telefono);
         tilCorreo = (TextInputLayout) findViewById(R.id.til_correo);
@@ -211,4 +194,3 @@ public class Contactos extends AppCompatActivity implements  GoogleApiClient.OnC
     }
 
 }
->>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
