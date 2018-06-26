@@ -43,6 +43,9 @@ public class Anticretico extends AppCompatActivity implements BottomNavigationVi
             case R.id.lista_id:
                 fragment =new Anticretico_listaFragment();
                 break;
+            case R.id.mmapa_id:
+                fragment =new Anticretico_mapaFragment();
+                break;
 
 
         }

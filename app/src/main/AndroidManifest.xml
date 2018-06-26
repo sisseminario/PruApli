@@ -8,6 +8,9 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -43,15 +46,17 @@
             android:name=".Contactos"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ThemeContacto" />
-      <!--  <activity android:name=".Venta_lista" />
-        <activity android:name=".Venta_buscar" />-->
+        <!--
+        <activity android:name=".Venta_lista" />
+        <activity android:name=".Venta_buscar" />
+        -->
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -59,8 +64,25 @@
 
         <activity
             android:name=".Mapas"
-            android:label="@string/title_activity_mapas"></activity>
-
+            android:label="@string/title_activity_mapas" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".Home_mapa"
+            android:label="@string/title_activity_home_mapa" />
+        <activity android:name=".Home_camara"
+            android:parentActivityName=".Home"
+            android:theme="@style/ThemeHome"
+            ></activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        
     </application>
 
 </manifest>

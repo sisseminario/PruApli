@@ -7,36 +7,57 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="ThemeHome" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/darkblue_dark</item>
         <item name="colorPrimaryDark">@color/sobrecabeza</item>
         <item name="colorAccent">@color/darkblue_dark</item>
     </style>
+
     <style name="ThemeVenta" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryDark">@color/sobrecabeza</item>
         <item name="colorAccent">@color/blue</item>
     </style>
+
     <style name="ThemeAlquiler" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/lime_dark</item>
         <item name="colorPrimaryDark">@color/sobrecabeza</item>
         <item name="colorAccent">@color/lime_dark</item>
     </style>
+
     <style name="ThemeAnticretico" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryDark">@color/sobrecabeza</item>
         <item name="colorAccent">@color/green</item>
     </style>
+
     <style name="ThemeMapa" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/violeta</item>
         <item name="colorPrimaryDark">@color/sobrecabeza</item>
         <item name="colorAccent">@color/violeta</item>
     </style>
+
     <style name="ThemeContacto" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/darvioleta</item>
         <item name="colorPrimaryDark">@color/sobrecabeza</item>
         <item name="colorAccent">@color/darvioleta</item>
     </style>
 
+<<<<<<< HEAD
 
+=======
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Hint" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+>>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
 </resources>

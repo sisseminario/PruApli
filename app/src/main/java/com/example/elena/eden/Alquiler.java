@@ -44,8 +44,9 @@ public class Alquiler extends AppCompatActivity implements BottomNavigationView.
             case R.id.lista_id:
                 fragment =new Alquiler_listaFragment();
                 break;
-
-
+            case R.id.mmapa_id:
+                fragment =new Alquiler_mapaFragment();
+                break;
         }
 
         return loadFragment(fragment);

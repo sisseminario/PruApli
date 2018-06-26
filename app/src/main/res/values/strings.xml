@@ -4,8 +4,38 @@
     <string name="mapa">Ver Mapa</string>
     <string name="lista">Ver lista</string>
     <string name="title_activity_mapas">Map</string>
+    <string name="title_activity_login">Contactos</string>
+    <string name="error_login">El sitemano pudo conectarse a google play service intente de nuevo mas tarde</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<<<<<<< HEAD
 
+=======
+    <string name="title_activity_login_result">LoginResult</string>
+    <string name="no_log_in">No se peude iniciar secion</string>
+    <string name="not_contactos">No se puede iniciar Secion</string>
+    <string name="not_login">no se puede iniciar secion</string>
+
+    <!-- TODO: Remove or change this placeholder login -->
+    <string name="not_log_in">No se pudo iniciar sesión</string>
+    <string name="cerrar_secion">Cerrar Secion</string>
+    <string name="revoke">Revoke</string>
+    <string name="not_close_session">No se pudo cerrar sesión</string>
+    <string name="not_revoke">No se pudo revocar el acceso</string>
+    <string name="logout">LogOut</string>
+
+    <!-- TODO: Remove or change this placeholder contactos -->
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_telefono">Telefono</string>
+    <string name="hint_correo">Correo</string>
+    <string name="accion_aceptar">Aceptar</string>
+    <string name="title_activity_mapas2">Mapas2Activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_mp_registro">Map</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_venta_camara">Venta_camara</string>
+    <string name="title_activity_home_camara">Home_camara</string>
+    <string name="title_activity_home_mapa">Map</string>
+>>>>>>> a8cf0023c17ef85dd775b322c457051430b8131c
 </resources>

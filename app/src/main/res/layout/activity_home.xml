@@ -6,47 +6,74 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Home">
-    <GridLayout
+
+    <!-- Bottom Bar -->
+    <LinearLayout
+        android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="240dp"
-                android:background="@mipmap/ic_banner"
-                android:textAlignment="center"
-                android:text="SE BIENVENIDO A EDEN"
-                android:textSize="20dp"
-                android:layout_gravity="bottom"
-                android:textColor="@color/negro"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="3">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_weight="1"
-                    android:layout_margin="2dp"
-                    android:orientation="vertical"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="190dp"
-                        android:textAlignment="center"
-                        android:text="Hola le dasmos ala bienvenida a la aplicacion eden y app donde podra encontrar oferta de imnuebles "
-                        android:textColor="@color/negro"/>
-                </LinearLayout>
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-            </LinearLayout>
+        <Button
+            android:id="@+id/boton_Mapa"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mapa" />
 
-        </LinearLayout>
-    </GridLayout>
+        <Button
+            android:id="@+id/boton_cam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/darkblue_dark"
+            android:text="Camara"
+            android:textColor="@android:color/white" />
 
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/negro"
+        android:gravity="center_horizontal"
+        android:text="Registar tu Propiedad"
+        android:textSize="30dp" />
+
+    <include layout="@layout/fragment_registro_propiedad" />
+
+
+
+    <!-- Bottom Bar -->
+
+    <LinearLayout
+        android:id="@+id/bottom_Send"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="42dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/boton_enviar"
+            android:layout_width="17dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/blue"
+            android:text="Enviar"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
 
 </LinearLayout>
