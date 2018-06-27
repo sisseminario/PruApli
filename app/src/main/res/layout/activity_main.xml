@@ -45,14 +45,15 @@
                             android:scaleType="centerInside"
                             android:padding="8dp"
                             android:tint="@color/white"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="HOME"
-                            android:textSize="14sp"
+                            android:layout_below="@+id/home"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
-                            android:layout_below="@+id/home"/>
+                            android:text="SUBE TU CASA"
+                            android:textSize="14sp" />
                     </RelativeLayout>
                 </RelativeLayout>
                 <RelativeLayout
