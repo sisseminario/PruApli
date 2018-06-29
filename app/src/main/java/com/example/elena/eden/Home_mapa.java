@@ -4,7 +4,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,8 +15,22 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpResponse;
 
 public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
@@ -32,6 +48,33 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         txt_view = (TextView)this.findViewById(R.id.txt);
+        Button storeBtn = (Button)this.findViewById(R.id.store);
+        loadData();
+        storeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RequestParams params = new RequestParams();
+                String send = "";
+                for (int i =0; i < list_markers.size() ; i++ ){
+                    LatLng coor = list_markers.get(i).getPosition();
+                    send +="{" + coor .latitude + "," + coor.longitude + "}";
+                }
+                params.put("coor", send);
+                AsyncHttpClient client =  new AsyncHttpClient();
+                client.post("http://192.168.1.107:3000/sendcoords", params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        showToast();
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        errorToast();
+                    }
+                });
+            }
+        });
+
         list_markers = new ArrayList<Marker>();
 
         FloatingActionButton removeBtn = (FloatingActionButton) findViewById(R.id.remove);
@@ -63,6 +106,12 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
             }
         });
     }
+    private void showToast(){
+        Toast.makeText(this,"ERROR!!", Toast.LENGTH_SHORT).show();
+    }
+    private void errorToast(){
+        Toast.makeText(this,"Se inserto con exito", Toast.LENGTH_SHORT).show();
+    }
 
     private void upDateMsnText() {
         if (isInadd == true){
@@ -70,6 +119,38 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
         }else {
             txt_view.setText("");
         }
+    }
+    private void loadData(){
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get("http://192.168.1.107:3000/", null, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                // Pull out the first event on the public timeline
+                JSONArray aux = timeline;
+                ArrayList<LatLng> list_lat = new ArrayList<LatLng>();
+                for (int i = 0; i < aux.length(); i++) {
+                    try {
+                        JSONObject obj = aux.getJSONObject(i);
+                        double lat = Double.parseDouble(obj.get("lat").toString());
+                        double lng = Double.parseDouble(obj.get("lng").toString());
+                        list_lat.add(new LatLng(lat, lng));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                for (int i = 0; i < list_lat.size(); i++) {
+                    setMark(list_lat.get(i));
+                }
+            }
+        });
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
