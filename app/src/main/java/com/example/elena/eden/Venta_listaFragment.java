@@ -46,7 +46,9 @@ public class Venta_listaFragment extends Fragment {
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
         ///aqui se pone para el servicio
-        client.get("http://192.168.1.109:7777/api/vo1.0/propiedad" , new JsonHttpResponseHandler() {
+
+        client.get("http://192.168.1.109:7777/api/v1.0/propiedad", new JsonHttpResponseHandler() {
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 ////aqui sevicio
@@ -54,6 +56,7 @@ public class Venta_listaFragment extends Fragment {
                     JSONArray listData = response.getJSONArray("info");
                     for (int i = 0; i < listData.length(); i++) {
                         JSONObject obj = listData.getJSONObject(i);
+
                         String vender_alqui_anticre = obj.getString("vender_alqui_anticre");
                         String estado = obj.getString("estado");
                         String descripcion = obj.getString("descripcion");
@@ -94,7 +97,6 @@ public class Venta_listaFragment extends Fragment {
                                 garaje, amoblado, ubicacion, direccion, precio, precio, moneda, tipo_vivenda, nombre_zona,
                                 nombre_ciudad, lat, lng, nombre_dueno, apellido_dueno, telefono_dueno, celular_dueno,
                                 supterrreno, email_dueno, id, urllist));
-
                     }
                     LoadComponents();
                 } catch (JSONException e) {
@@ -105,10 +107,9 @@ public class Venta_listaFragment extends Fragment {
     }
     private void LoadComponents () {
 
-        ListView list = (ListView) ROOT.findViewById(R.id.super_lista_vent);
+        ListView list = (ListView) ROOT.findViewById(R.id.super_lista_anti);
         MenuBaseAdapter adapter = new MenuBaseAdapter(this.getActivity(), DataApp.LISTDATA);
         list.setAdapter(adapter);
         this.event.OnLodCompleteDataResult();
     }
-}
 

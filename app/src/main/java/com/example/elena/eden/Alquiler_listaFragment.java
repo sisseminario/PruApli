@@ -95,7 +95,6 @@ public class Alquiler_listaFragment extends Fragment {
                                 garaje, amoblado, ubicacion, direccion, precio, precio, moneda, tipo_vivenda, nombre_zona,
                                 nombre_ciudad, lat, lng, nombre_dueno, apellido_dueno, telefono_dueno, celular_dueno,
                                 supterrreno, email_dueno, id, urllist));
-
                     }
                     LoadComponents();
                 } catch (JSONException e) {

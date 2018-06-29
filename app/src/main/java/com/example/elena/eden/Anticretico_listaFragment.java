@@ -46,7 +46,9 @@ public class Anticretico_listaFragment extends Fragment {
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
         ///aqui se pone para el servicio
+
         client.get("http://192.168.1.109:7777/api/v1.0/propiedad", new JsonHttpResponseHandler() {
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 ////aqui sevicio
@@ -54,6 +56,7 @@ public class Anticretico_listaFragment extends Fragment {
                     JSONArray listData = response.getJSONArray("info");
                     for (int i = 0; i < listData.length(); i++) {
                         JSONObject obj = listData.getJSONObject(i);
+
                         String vender_alqui_anticre = obj.getString("vender_alqui_anticre");
                         String estado = obj.getString("estado");
                         String descripcion = obj.getString("descripcion");

@@ -51,7 +51,7 @@ public class MenuBaseAdapter extends BaseAdapter implements  OnLoadCompleImg{
         TextView txt1 = convertView.findViewById(R.id.textView2);
         TextView txt2 = convertView.findViewById(R.id.textView3);
         ImageView img = convertView.findViewById(R.id.imageView2);
-        txt1.setText(this.list.get(position).getDireccion());
+        txt1.setText(this.list.get(position).getEstado());
         txt2.setText(this.list.get(position).getPrecio()+ "");
         counter.add(txt2);
         if (this.list.get(position).getImg() == null) {
