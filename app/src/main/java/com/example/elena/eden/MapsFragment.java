@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.elena.eden.DATA.DataApp;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -41,9 +42,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     public void setListFragment() {
         if (DataApp.LISTDATA != null && DataApp.LISTDATA.size() > 0) {
             for (int i = 0; i < DataApp.LISTDATA.size(); i++) {
-                LatLng position = new LatLng(DataApp.LISTDATA.get(i).getLat(), DataApp.LISTDATA.get(i).getLon());
+                LatLng position = new LatLng(DataApp.LISTDATA.get(i).getLat(), DataApp.LISTDATA.get(i).getLng());
 
-                mMap.addMarker(new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getStreet()));
+                mMap.addMarker(new MarkerOptions().position(position).title(DataApp.LISTDATA.get(i).getUbicacion()));
 
             }
         }

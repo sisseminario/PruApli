@@ -51,16 +51,16 @@ public class MenuBaseAdapter extends BaseAdapter implements  OnLoadCompleImg{
         TextView txt1 = convertView.findViewById(R.id.textView2);
         TextView txt2 = convertView.findViewById(R.id.textView3);
         ImageView img = convertView.findViewById(R.id.imageView2);
-        txt1.setText(this.list.get(position).getStreet());
-        txt2.setText(this.list.get(position).getPrice()+ "");
+        txt1.setText(this.list.get(position).getDireccion());
+        txt2.setText(this.list.get(position).getPrecio()+ "");
         counter.add(txt2);
         if (this.list.get(position).getImg() == null) {
             //Load IMG
             LoaderImg loader = new LoaderImg();
             loader.setOnloadCompleteImg(img , position,this);
-            loader.execute(this.list.get(position).getUrlimg());
+            loader.execute(this.list.get(position).getUrlimg().get(0));
         } else {
-            img.setImageBitmap(this.list.get(position).getImg());
+            img.setImageBitmap(this.list.get(position).getImg().get(0));
         }
 
         return convertView;
@@ -68,7 +68,9 @@ public class MenuBaseAdapter extends BaseAdapter implements  OnLoadCompleImg{
 
     @Override
     public void OnloadCompleteImgResult(ImageView img, int position, Bitmap imgsourceimg) {
-        this.list.get(position).setImg(imgsourceimg);
+        ArrayList<Bitmap> source = new ArrayList<Bitmap>();
+        source.add(imgsourceimg);
+        this.list.get(position).setImg(source);
         img.setImageBitmap(imgsourceimg);
     }
 }

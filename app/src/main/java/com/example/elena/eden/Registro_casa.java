@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class Registro_casa extends AppCompatActivity {
+public class Registro_casa extends AppCompatActivity implements View.OnClickListener {
 
     Spinner sp_estado;
     Spinner sp_ciudades;
@@ -114,4 +114,8 @@ public class Registro_casa extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

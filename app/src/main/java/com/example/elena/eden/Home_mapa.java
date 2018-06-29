@@ -48,7 +48,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         txt_view = (TextView)this.findViewById(R.id.txt);
-        Button storeBtn = (Button)this.findViewById(R.id.store);
+        FloatingActionButton storeBtn = (FloatingActionButton) this.findViewById(R.id.store);
         loadData();
         storeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +61,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                 }
                 params.put("coor", send);
                 AsyncHttpClient client =  new AsyncHttpClient();
-                client.post("http://192.168.1.107:3000/sendcoords", params, new AsyncHttpResponseHandler() {
+                client.post("http://192.168.1.109:7777/sendcoords", params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         showToast();
@@ -122,7 +122,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
     }
     private void loadData(){
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://192.168.1.107:3000/", null, new JsonHttpResponseHandler() {
+        client.get("http://192.168.1.109:7777/getCoors", null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
@@ -147,7 +147,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
 
                 }
                 for (int i = 0; i < list_lat.size(); i++) {
-                    setMark(list_lat.get(i));
+                    setMarke(list_lat.get(i));
                 }
             }
         });
@@ -172,5 +172,9 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
             list_markers.add(m);
         }
 
+    }
+
+    public void setMarke(LatLng latLng) {
+        Marker m = mMap.addMarker(new MarkerOptions().position(latLng).title("NO title"));
     }
 }
