@@ -46,7 +46,7 @@ public class Venta_listaFragment extends Fragment {
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
         ///aqui se pone para el servicio
-        client.get("http://192.168.1.112:7777/api/vo1.0/venta/" , new JsonHttpResponseHandler() {
+        client.get("http://192.168.42.32:7777/api/vo1.0/propiedad/" , new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 ////aqui sevicio
@@ -54,14 +54,26 @@ public class Venta_listaFragment extends Fragment {
                     JSONArray listData = response.getJSONArray("info");
                     for (int i = 0; i < listData.length(); i++) {
                         JSONObject obj = listData.getJSONObject(i);
-                        String street = obj.getString("street");
-                        Integer price = obj.getInt("price");
-                        double lat = obj.getDouble("lat");
-                        double lon = obj.getDouble("lon");
-                        String contact = obj.getString("contact");
+                        String estado= obj.getString("estado");
+                        String descripcion=obj.getString("descripcion");
+                        String servicios_basicos=obj.getString("servicios_basicos");
+                        String descripcion_banios=obj.getString("descripcion_banios");
+                        Integer pisos= obj.getInt("pisos");
+                        Integer numparqueos =obj.getInt("numparqueos");
+                        String ubicacion=obj.getString("ubicacion");
+                        Integer precio = obj.getInt("precio");
+                        String tipo_oferta=obj.getString("tipo_oferta");
+                        Double latitud=obj.getDouble("latitud");
+                        Double longitud=obj.getDouble("longitud");
+                        String nonbre_dueno = obj.getString("nombre_dueno");
+                        Integer celular_dueno=obj.getInt("celular_dueno");
+                        Integer telefono_dueno=obj.getInt("telefono_dueno");
                         String id = obj.getString("_id");
                         String url = (String)obj.getJSONArray("gallery").get(0);
-                        DataApp.LISTDATA.add(new ItemMenuStructure(street, url, price, lat, lon, contact, "", "", id,""));
+                        DataApp.LISTDATA.add(new ItemMenuStructure(estado,descripcion,"",servicios_basicos,descripcion_banios, pisos,
+                                "","",numparqueos,"",ubicacion,precio,tipo_oferta,
+                                "",latitud,longitud,nonbre_dueno,"",celular_dueno,telefono_dueno,
+                                "","","",url, id));
                     }
                     LoadComponents();
                 } catch (JSONException e) {
