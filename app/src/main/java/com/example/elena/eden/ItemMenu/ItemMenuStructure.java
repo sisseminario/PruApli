@@ -14,6 +14,7 @@ public class ItemMenuStructure {
     private String otros;
     private Integer numero_banios;
     private Integer numero_habitaciones;
+    private Integer nuemro_cocina;
     private Integer pisos;
     private String elevador;
     private String piscina;
@@ -38,7 +39,7 @@ public class ItemMenuStructure {
     private ArrayList<Bitmap>  img;
     public ItemMenuStructure(String vender_alqui_anticre, String estado, String descripcion,
                              String amurallado, String servicios_basicos, String otros,
-                             Integer numero_banios, Integer numero_habitaciones, Integer pisos,
+                             Integer numero_banios, Integer numero_habitaciones, Integer nuemro_cocina, Integer pisos,
                              String elevador, String piscina, String garaje, String amoblado,
                              String ubicacion, String direccion, Integer precio, Integer precio1,
                              Integer moneda, String tipo_vivenda, String nombre_zona,
@@ -56,6 +57,7 @@ public class ItemMenuStructure {
         this.otros = otros;
         this.numero_banios = numero_banios;
         this.numero_habitaciones = numero_habitaciones;
+        this.nuemro_cocina = nuemro_cocina;
         this.pisos = pisos;
         this.elevador = elevador;
         this.piscina = piscina;
@@ -105,6 +107,8 @@ public class ItemMenuStructure {
     public String getOtros(){return this.otros;}
     public Integer getNumero_banios(){return this.numero_banios;}
     public Integer getNumero_habitaciones(){ return this.numero_habitaciones;}
+
+    public Integer getNuemro_cocina(){ return this.nuemro_cocina;}
     public Integer getPisos(){ return this.pisos;}
     public String getElevador(){ return this.elevador;}
     public String getPiscina(){ return this.piscina;}

@@ -65,6 +65,8 @@ public class Anticretico_listaFragment extends Fragment {
                         String otros = obj.getString("otros");
                         Integer numero_banios = obj.getInt("numero_banios");
                         Integer numero_habitaciones = obj.getInt("numero_habitaciones");
+                        Integer nuemro_cocina = obj.getInt("nuemro_cocina");
+
                         Integer pisos = obj.getInt("pisos");
                         String elevador = obj.getString("elevador");
                         String piscina = obj.getString("piscina");
@@ -93,7 +95,7 @@ public class Anticretico_listaFragment extends Fragment {
                         }
 
                         DataApp.LISTDATA.add(new ItemMenuStructure(vender_alqui_anticre, estado, descripcion, amurallado,
-                                servicios_basicos, otros, numero_banios, numero_habitaciones, pisos, elevador, piscina,
+                                servicios_basicos, otros, numero_banios, numero_habitaciones, nuemro_cocina, pisos, elevador, piscina,
                                 garaje, amoblado, ubicacion, direccion, precio, precio, moneda, tipo_vivenda, nombre_zona,
                                 nombre_ciudad, lat, lng, nombre_dueno, apellido_dueno, telefono_dueno, celular_dueno,
                                 supterrreno, email_dueno, id, urllist));

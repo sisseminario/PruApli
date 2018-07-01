@@ -348,30 +348,6 @@
 
 
             <TextView
-                android:id="@+id/estado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
-                android:text="Estado de la propiedad"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/moneda"
-                tools:ignore="MissingConstraints" />
-
-
-            <Spinner
-                android:id="@+id/menu_estado"
-                android:layout_width="185dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.281"
-                app:layout_constraintStart_toEndOf="@+id/estado"
-                app:layout_constraintTop_toBottomOf="@+id/nomeda_bol" />
-
-            <TextView
                 android:id="@+id/desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -381,7 +357,7 @@
                 android:text="Descripcion"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/menu_estado" />
+                app:layout_constraintTop_toBottomOf="@+id/nomeda_bol" />
 
             <EditText
                 android:id="@+id/desciption_propi"
@@ -565,7 +541,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="number"
                 app:layout_constraintStart_toEndOf="@+id/num_cocina"
                 app:layout_constraintTop_toBottomOf="@+id/numero_banios" />
 
