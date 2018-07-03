@@ -1,48 +1,33 @@
 package com.example.elena.eden;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.AdapterView;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.CheckBox;
+        import android.widget.RadioGroup;
+        import android.widget.Spinner;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import com.example.elena.eden.DATA.DataApp;
-import com.example.elena.eden.DATA.UserData;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
+        import com.example.elena.eden.DATA.DataApp;
+        import com.example.elena.eden.DATA.UserData;
+        import com.loopj.android.http.AsyncHttpClient;
+        import com.loopj.android.http.JsonHttpResponseHandler;
+        import com.loopj.android.http.RequestParams;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.text.BreakIterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+        import java.util.Map;
 
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.NameValuePair;
-import cz.msebera.android.httpclient.client.ClientProtocolException;
-import cz.msebera.android.httpclient.client.HttpClient;
-import cz.msebera.android.httpclient.client.entity.UrlEncodedFormEntity;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
-import cz.msebera.android.httpclient.message.BasicNameValuePair;
-
-import static com.example.elena.eden.R.id.agua;
+        import cz.msebera.android.httpclient.Header;
+        import cz.msebera.android.httpclient.client.HttpClient;
+        import cz.msebera.android.httpclient.client.methods.HttpPost;
 
 public class Registro_casa extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,18 +37,12 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
     String[] tipopropiedad;
     HttpClient cliente;
     HttpPost post;
-    List<NameValuePair> lista;
     private boolean isFirstTime = true;
-    EditText nombre_dueno, apellidos_dueno, telefono_dueno, celular_dueno, email_dueno,
-            direccion, precio_propiedad, nomeda_bol, desciption_propi, supterreno, numero_habitaciones,
-            numero_banios, nuemro_cocina, otros_cuartos, numpisos, nombre_zona;
 
     Button camara;
     Button mapa;
     private Context root;
     Button guardar;
-    RadioGroup radio, radio1, radio2, radio3, radio4, radio5;
-    CheckBox agua, luz, gas, alcantarillado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +51,8 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_registro_casa);
 
         //Botones
-        camara = (Button) findViewById(R.id.boton_cam);
+
+       /*camara = (Button) findViewById(R.id.boton_cam);
         camara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,13 +60,21 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
                 startActivity(camara);
             }
         });
-
+*/
         mapa = (Button) findViewById(R.id.boton_Mapa);
         mapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mapa = new Intent(Registro_casa.this, Home_mapa.class);
                 startActivity(mapa);
+            }
+        });
+        guardar = (Button) this.findViewById(R.id.guardar);
+        guardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent camara = new Intent(Registro_casa.this, Home_camara.class);
+                startActivity(camara);
             }
         });
 
@@ -133,97 +121,31 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
 
             }
         });
-        nombre_dueno = (EditText) this.findViewById(R.id.nombre_dueno);
-        apellidos_dueno = (EditText) this.findViewById(R.id.apellidos_dueno);
-        telefono_dueno = (EditText) this.findViewById(R.id.telefono_dueno);
-        celular_dueno = (EditText) this.findViewById(R.id.celular_dueno);
-        email_dueno = (EditText) this.findViewById(R.id.email_dueno);
-
-        direccion = (EditText) this.findViewById(R.id.direccion);
-        precio_propiedad = (EditText) this.findViewById(R.id.precio_propiedad);
-        nomeda_bol = (EditText) this.findViewById(R.id.nomeda_bol);
-        desciption_propi = (EditText) this.findViewById(R.id.desciption_propi);
-        supterreno = (EditText) this.findViewById(R.id.supterreno);
-        numero_habitaciones = (EditText) this.findViewById(R.id.numero_habitaciones);
-        numero_banios = (EditText) this.findViewById(R.id.numero_banios);
-        nuemro_cocina = (EditText) this.findViewById(R.id.nuemro_cocina);
-        otros_cuartos = (EditText) this.findViewById(R.id.otros_cuartos);
-        numpisos = (EditText) this.findViewById(R.id.numpisos);
-        nombre_zona = (EditText) this.findViewById(R.id.nombre_zona);
-
-        guardar = (Button)findViewById(R.id.guardar);
-        guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (nombre_dueno.getText().toString().equals("")){
-                    Toast.makeText(Registro_casa.this, "Porfabor Introdusca su Nombre", Toast.LENGTH_LONG).show();
-                }else {
-                    new Registro_casa.EnviarDatos(Registro_casa.this).execute();
-                }
-            }
-        });
-
 
     }
 
-    class EnviarDatos extends AsyncTask<String, String, String > {
+    @Override
+    public void onClick(View v) {
+        TextView nombre_dueno = (TextView) this.findViewById(R.id.nombre_dueno);
+        TextView apellidos_dueno = (TextView) this.findViewById(R.id.apellidos_dueno);
+        TextView telefono_dueno = (TextView) this.findViewById(R.id.telefono_dueno);
+        TextView celular_dueno = (TextView) this.findViewById(R.id.celular_dueno);
+        TextView email_dueno = (TextView) this.findViewById(R.id.email_dueno);
+
+        TextView direccion = (TextView) this.findViewById(R.id.direccion);
+        TextView precio_propiedad = (TextView) this.findViewById(R.id.precio_propiedad);
+        TextView nomeda_bol = (TextView) this.findViewById(R.id.nomeda_bol);
+        TextView desciption_propi = (TextView) this.findViewById(R.id.desciption_propi);
+        TextView supterreno = (TextView) this.findViewById(R.id.supterreno);
+        TextView numero_habitaciones = (TextView) this.findViewById(R.id.numero_habitaciones);
+        TextView numero_banios = (TextView) this.findViewById(R.id.numero_banios);
+        TextView nuemro_cocina = (TextView) this.findViewById(R.id.nuemro_cocina);
+        TextView otros_cuartos = (TextView) this.findViewById(R.id.otros_cuartos);
+        TextView numpisos = (TextView) this.findViewById(R.id.numpisos);
+        TextView nombre_zona = (TextView) this.findViewById(R.id.nombre_zona);
 
 
-
-        private Activity contexto;
-        EnviarDatos(Activity context){
-            this.contexto = context;
-        }
-        @Override
-        protected String doInBackground(String... strings) {
-
-            if(datos ()){
-                contexto.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(contexto, "Datos enviados Existosamente", Toast.LENGTH_SHORT).show();
-
-                        nombre_dueno.setText("");
-                        apellidos_dueno.setText("");
-                        telefono_dueno.setText("");
-                        celular_dueno.setText("");
-                        email_dueno.setText("");
-
-                        direccion.setText("");
-                        precio_propiedad.setText("");
-                        nomeda_bol.setText("");
-                        desciption_propi.setText("");
-                        supterreno.setText("");
-                        numero_habitaciones.setText("");
-                        numero_banios.setText("");
-                        nuemro_cocina.setText("");
-                        otros_cuartos.setText("");
-                        numpisos.setText("");
-                        nombre_zona.setText("");
-
-                    }
-                });
-
-
-            }
-            else{
-                contexto.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(contexto, "Su nombre es incorrecto", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-            }
-
-            return null;
-        }
-    }
-
-    private boolean datos (){
-        cliente = new DefaultHttpClient();
-        post = new HttpPost("http://192.168.1.109:7777/api/vo1.0/propiedad");
-        radio = (RadioGroup) this.findViewById(R.id.seleccionventa);
+        RadioGroup radio = (RadioGroup) this.findViewById(R.id.seleccionventa);
         String estado = "";
         if (radio.getCheckedRadioButtonId() == R.id.vender) {
             estado = "vender";
@@ -235,7 +157,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             }
         }
 
-        radio1 = (RadioGroup) this.findViewById(R.id.radioGroup);
+        RadioGroup radio1 = (RadioGroup) this.findViewById(R.id.radioGroup);
         String amurallado = "";
         if (radio1.getCheckedRadioButtonId() == R.id.amurrallado_si) {
             amurallado = "Amurallado";
@@ -243,36 +165,36 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             amurallado = "";
         }
 
-        agua = (CheckBox) this.findViewById(R.id.agua);
+        CheckBox agua = (CheckBox) this.findViewById(R.id.agua);
         String agua1 = "";
         if (agua.isChecked()) {
             agua1 = " agua, ";
         } else {
             agua1 = "";
         }
-        luz = (CheckBox) this.findViewById(R.id.luz);
+        CheckBox luz = (CheckBox) this.findViewById(R.id.luz);
         String luz1 = "";
         if (luz.isChecked()) {
-            luz1 = " luz, ";
+            luz1 = "luz";
         } else {
             luz1 = "";
         }
-        gas = (CheckBox) this.findViewById(R.id.gas);
+        CheckBox gas = (CheckBox) this.findViewById(R.id.gas);
         String gas1 = "";
         if (gas.isChecked()) {
-            gas1 = " gas, ";
+            gas1 = "agua";
         } else {
             gas1 = "";
         }
-        alcantarillado = (CheckBox) this.findViewById(R.id.alcantarillado);
+        CheckBox alcantarillado = (CheckBox) this.findViewById(R.id.alcantarillado);
         String alcantarillado1 = "";
         if (alcantarillado.isChecked()) {
-            alcantarillado1 = " alcantarillado";
+            alcantarillado1 = "alcantarillado1";
         } else {
             alcantarillado1 = "";
         }
 
-        radio2 = (RadioGroup) this.findViewById(R.id.selction_elv);
+        RadioGroup radio2 = (RadioGroup) this.findViewById(R.id.selction_elv);
         String elevador = "";
         if (radio2.getCheckedRadioButtonId() == R.id.si_elev) {
             elevador = "elevador";
@@ -280,7 +202,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             elevador = "";
         }
 
-        radio3 = (RadioGroup) this.findViewById(R.id.selction_piscina);
+        RadioGroup radio3 = (RadioGroup) this.findViewById(R.id.selction_piscina);
         String piscina = "";
         if (radio3.getCheckedRadioButtonId() == R.id.si_piscina) {
             piscina = "piscina";
@@ -288,7 +210,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             piscina = "";
         }
 
-        radio4 = (RadioGroup) this.findViewById(R.id.selction_garaje);
+        RadioGroup radio4 = (RadioGroup) this.findViewById(R.id.selction_garaje);
         String garaje = "";
         if (radio4.getCheckedRadioButtonId() == R.id.si_garaje) {
             garaje = "garaje";
@@ -296,7 +218,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             garaje = "";
         }
 
-        radio5 = (RadioGroup) this.findViewById(R.id.selction_amoblado);
+        RadioGroup radio5 = (RadioGroup) this.findViewById(R.id.selction_amoblado);
         String amoblado = "";
         if (radio5.getCheckedRadioButtonId() == R.id.si_amoblado) {
             amoblado = "amoblado";
@@ -304,59 +226,53 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             amoblado = "";
         }
 
-        lista = new ArrayList<NameValuePair>(11);
-        lista.add(new BasicNameValuePair("estado",estado));
-        lista.add(new BasicNameValuePair("nombre_dueno", nombre_dueno.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("apellido_dueno", apellidos_dueno.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("telefono_dueno", telefono_dueno.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("celular_dueno", celular_dueno.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("email_dueno", email_dueno.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("tipo_vivienda", sp_tipopropi.getSelectedItem().toString()));
-        lista.add(new BasicNameValuePair("direccion", direccion.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("nombre_ciudad", sp_ciudades.getSelectedItem().toString()));
-        lista.add(new BasicNameValuePair("precio", precio_propiedad.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("moneda", nomeda_bol.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("descripcion", desciption_propi.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("supterreno", supterreno.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("amurallado", amurallado));
-        lista.add(new BasicNameValuePair("servicios_basicos", agua1 + luz1 + gas1 + alcantarillado1));
-        lista.add(new BasicNameValuePair("numero_habitaciones", numero_habitaciones.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("numero_banios", numero_banios.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("nuemro_cocinas", nuemro_cocina.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("otros", otros_cuartos.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("pisos", numpisos.getText().toString().trim()));
-        lista.add(new BasicNameValuePair("elevador", elevador));
-        lista.add(new BasicNameValuePair("piscina", piscina));
-        lista.add(new BasicNameValuePair("garaje", garaje));
-        lista.add(new BasicNameValuePair("amoblado", amoblado));
-        lista.add(new BasicNameValuePair("nombre_zona", nombre_zona.getText().toString().trim()));
-
-        try{
-            post.setEntity(new UrlEncodedFormEntity(lista));
-            cliente.execute(post);
-            return true;
-
-        }catch (UnsupportedEncodingException e){
-
-            e.printStackTrace();
-
-        }catch (ClientProtocolException e){
-
-            e.printStackTrace();
-
-        }catch (IOException e){
-
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-    @Override
-    public void onClick(View v) {
-
-
         AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.put("estado", estado);
+        params.put("nombre_dueno", nombre_dueno.getText());
+        params.put("apellido_dueno", apellidos_dueno.getText());
+        params.put("telefono_dueno", telefono_dueno.getText());
+        params.put("celular_dueno", celular_dueno.getText());
+        params.put("email_dueno", email_dueno.getText());
+        params.put("tipo_vivienda", sp_tipopropi.getSelectedItem().toString());
+        params.put("direccion", direccion.getText());
+        params.put("nombre_ciudad", sp_ciudades.getSelectedItem().toString());
+        params.put("precio", precio_propiedad.getText());
+        params.put("moneda", nomeda_bol.getText());
+        params.put("descripcion", desciption_propi.getText());
+        params.put("supterreno", supterreno.getText());
+        params.put("amurallado", amurallado);
+        params.put("servicios_basicos", agua1 + luz1 + gas1 + alcantarillado1);
+        params.put("numero_habitaciones", numero_habitaciones.getText());
+        params.put("numero_banios", numero_banios.getText());
+        params.put("nuemro_cocinas", nuemro_cocina.getText());
+        params.put("otros", otros_cuartos.getText());
+        params.put("pisos", numpisos.getText());
+        params.put("elevador", elevador);
+        params.put("piscina", piscina);
+        params.put("garaje", garaje);
+        params.put("amoblado", amoblado);
+        params.put("nombre_zona", nombre_zona.getText());
+
+        client.post("http://192.168.1.109:7777/api/vo1.0/propiedad", params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    String msn = response.getString("msn");
+                    String id = response.getString("id");
+                    UserData.ID = id;
+                    if (msn != null) {
+                        Intent camera = new Intent(root, Home_camara.class);
+                        root.startActivity(camera);
+                    } else {
+                        Toast.makeText(root, "ERROR AL enviar los datos", Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //AsyncHttpClient.log.w(LOG_TAG, "onSuccess(int, Header[], JSONObject) was not overriden, but callback was received");
+            }
+        });
 
     }
 }
