@@ -56,8 +56,10 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                     send +="{" + coor.latitude + "," +coor.longitude + "} ";
                 }
                 params.put("coor", send);
+
                 AsyncHttpClient client = new AsyncHttpClient();
                 client.post("http://192.168.1.5:7777/api/vo1.0/sendcoloords", params, new AsyncHttpResponseHandler() {
+
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         showToast();
@@ -120,6 +122,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
     public void loadData(){
         AsyncHttpClient client = new AsyncHttpClient();
         client.get("http://192.168.1.5:7777/api/vo1.0/getCoors",null , new JsonHttpResponseHandler() {
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
@@ -174,3 +177,4 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
         }
     }
 }
+
