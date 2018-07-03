@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -33,35 +34,30 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.HttpResponse;
 
 public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
-
     private GoogleMap mMap;
-    private Boolean isInadd = false;
     private TextView txt_view;
+    private Boolean isInadd = false;
     private ArrayList<Marker> list_markers;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_mapa);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
         txt_view = (TextView)this.findViewById(R.id.txt);
-        Button storeBtn = (Button)this.findViewById(R.id.store);
+        FloatingActionButton storeBtn = (FloatingActionButton)this.findViewById(R.id.store);
         loadData();
         storeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 RequestParams params = new RequestParams();
                 String send = "";
-                for (int i =0; i < list_markers.size() ; i++ ){
+                for (int i = 0; i < list_markers.size(); i++) {
                     LatLng coor = list_markers.get(i).getPosition();
-                    send +="{" + coor .latitude + "," + coor.longitude + "}";
+                    send +="{" + coor.latitude + "," +coor.longitude + "} ";
                 }
                 params.put("coor", send);
-                AsyncHttpClient client =  new AsyncHttpClient();
-                client.post("http://192.168.1.107:3000/sendcoords", params, new AsyncHttpResponseHandler() {
+                AsyncHttpClient client = new AsyncHttpClient();
+                client.post("http://192.168.1.5:7777/api/vo1.0/sendcoloords", params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         showToast();
@@ -69,63 +65,65 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        errorToast();
+                        errorToas();
                     }
                 });
             }
         });
-
         list_markers = new ArrayList<Marker>();
-
         FloatingActionButton removeBtn = (FloatingActionButton) findViewById(R.id.remove);
         removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(list_markers.size() > 0){
-                    Marker aux = list_markers.get(list_markers.size()-1);
+                if (list_markers.size() > 0) {
+                    Marker aux =  list_markers.get(list_markers.size()-1);
                     aux.remove();
                     list_markers.remove(list_markers.size()-1);
                 }
-
             }
         });
 
-        FloatingActionButton addBtn= (FloatingActionButton) findViewById(R.id.add );
+        FloatingActionButton addBtn = (FloatingActionButton) findViewById(R.id.add);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isInadd == true){
+                if (isInadd == true) {
                     isInadd = false;
                 }else {
                     isInadd = true;
                 }
                 upDateMsnText();
+
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
-
             }
         });
-    }
-    private void showToast(){
-        Toast.makeText(this,"ERROR!!", Toast.LENGTH_SHORT).show();
-    }
-    private void errorToast(){
-        Toast.makeText(this,"Se inserto con exito", Toast.LENGTH_SHORT).show();
-    }
 
-    private void upDateMsnText() {
-        if (isInadd == true){
+
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+    public void errorToas(){
+        Toast.makeText(this,"ERROR!! ", Toast.LENGTH_SHORT).show();
+    }
+    public void showToast(){
+        Toast.makeText(this,"Se inserto con éxito ", Toast.LENGTH_SHORT).show();
+    }
+    public void upDateMsnText () {
+        if (isInadd == true) {
             txt_view.setText("Add Mark");
         }else {
             txt_view.setText("");
         }
     }
-    private void loadData(){
+    public void loadData(){
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://192.168.1.107:3000/", null, new JsonHttpResponseHandler() {
+        client.get("http://192.168.1.5:7777/api/vo1.0/getCoors",null , new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
+
 
             }
 
@@ -159,18 +157,20 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
         // Add a marker in Sydney and move the camera
         LatLng potosi = new LatLng(-19.578297, -65.758633);
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(potosi, 11));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(potosi, 14));
         mMap.setOnMapClickListener(this);
+    }
+    public void setMark(LatLng latLng) {
+        Marker m = mMap.addMarker(new MarkerOptions().position(latLng).title("No title"));
 
     }
-
     @Override
     public void onMapClick(LatLng latLng) {
-        if(isInadd) {
+
+        if (isInadd) {
             Marker m = mMap.addMarker(new MarkerOptions().position(latLng).title("No title"));
+
             list_markers.add(m);
         }
-
     }
 }
