@@ -14,6 +14,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +22,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.example.elena.eden.DATA.DataApp;
 import com.example.elena.eden.DATA.UserData;
 import com.example.elena.eden.ItemMenu.ItemMenuStructure;
@@ -52,9 +52,8 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
     private int MEDIA_CODE = 100;
     private int CAMERA_CODE = 101;
-    private String PATHIMAGE;
-    private String ABSOULTE_PATH;
     private Context root;
+    private String imageFilePath;
 
 
     @Override
@@ -153,18 +152,20 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
 
     }
     private void sendPhoto() throws FileNotFoundException {
+
         if ( IMG_CONTAINER.getDrawable() != null) {
+            Toast.makeText(root, "container OK", Toast.LENGTH_LONG).show();
             if (imageFilePath != null) {
+                Toast.makeText(root, "error", Toast.LENGTH_LONG).show();
                 File file = new File(imageFilePath);
                 RequestParams params = new RequestParams();
                 params.put("img", file);
                 AsyncHttpClient client = new AsyncHttpClient();
                 if (UserData.ID != null) {
-                    client.post("http://192.168.1.109:7777/api/vo1.0/propiedadimg" + "/" + UserData.ID, params, new JsonHttpResponseHandler(){
+                    client.post("http://192.168.43.140:7777/api/vo1.0/propiedadimg" + "/" + UserData.ID, params, new JsonHttpResponseHandler(){
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
-
                                 String path = response.getString("path");
                                 if (path != null) {
                                     Intent profile = new Intent(root, Profile.class);
@@ -176,7 +177,6 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
 
                         }
 
-
                     });
 
                 }
@@ -185,13 +185,12 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "No se ha sacado una foto", Toast.LENGTH_LONG).show();
         }
     }
-
     private void LoadMediaData() {
         Intent media = new Intent(Intent.ACTION_GET_CONTENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         media.setType("image/");
         startActivityForResult(media.createChooser(media, "Escoja la Aplicacion"), MEDIA_CODE);
     }
-    private String imageFilePath;
+
     private File createImageFile() throws IOException {
         String timeStamp =
                 new SimpleDateFormat("yyyyMMdd_HHmmss",
@@ -208,6 +207,8 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
         imageFilePath = image.getAbsolutePath();
         return image;
     }
+    private static final int REQUEST_CAPTURE_IMAGE = 100;
+
     private void openCameraIntent() {
         Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File file = createFile();
@@ -219,7 +220,6 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
         }
         startActivityForResult(camera, CAMERA_CODE);
     }
-
     private File createFile() {
         //Logica de creado
         File file = new File(Environment.getExternalStorageDirectory(), RUTA_IMAGEN);
@@ -235,11 +235,13 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
         File fileimg = new File(imageFilePath);
         return fileimg;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == MEDIA_CODE) {
             IMG_CONTAINER.setImageURI(data.getData());
+            imageFilePath = data.getDataString();
         }
         if(requestCode == CAMERA_CODE) {
 
@@ -257,20 +259,5 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
             IMG_CONTAINER.setImageBitmap(img);
 
         }
-
     }
-    private void SendData() throws FileNotFoundException{
-        if (PATHIMAGE != null){
-            AsyncHttpClient client = new AsyncHttpClient();
-            File file = new File(PATHIMAGE);
-            RequestParams params = new  RequestParams();
-            params.put("IMAGE", file);
-            //client.post("");
-        }else {
-            Toast.makeText(this,"seleccione una imagen primero", Toast.LENGTH_LONG).show();
-        }
-        return;
-
-    }
-
 }

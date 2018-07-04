@@ -49,6 +49,7 @@ public class ItemMenuStructure {
                              String id, ArrayList<String> urlimg) {
 
         this.vender_alqui_anticre = vender_alqui_anticre;
+
         this.estado = estado;
         this.descripcion = descripcion;
         this.supterrreno = supterrreno;
@@ -81,6 +82,7 @@ public class ItemMenuStructure {
         this.id = id;
         this.url = urlimg;
     }
+
 
     public void setImg(ArrayList<Bitmap> img) { this.img = img;}
     public void setPrecio (int p) {
