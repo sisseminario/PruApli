@@ -28,6 +28,7 @@ import cz.msebera.android.httpclient.Header;
 public class listcasaFragment extends Fragment implements AdapterView.OnItemClickListener {
     /*private ArrayList<ItemMenuStructure> LISTDATA;*/
 
+
     private View ROOT;
     private OnLoadDataComplete event;
 
@@ -36,7 +37,7 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         DataApp.LISTDATA =new ArrayList<ItemMenuStructure>();
-        ROOT= inflater.inflate(R.layout.list_fragment, container, false);
+        ROOT= inflater.inflate(R.layout.listarcasa_fragment, container, false);
         loadData();
         return ROOT;
     }
@@ -45,7 +46,7 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
     }
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(DataApp.HOST+"/api/v1.0/propiedad/", new JsonHttpResponseHandler() {
+        client.get(DataApp.HOST+"/api/v1.0/home/", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -53,10 +54,10 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
                     for (int i = 0; i < listData.length(); i++) {
                         JSONObject obj = listData.getJSONObject(i);
                         String estado = obj.getString("estado");
-                        int numero_banios = obj.getInt("numero_banios");
-                        int numero_habitaciones = obj.getInt("numero_habitaciones");
-                        int precio = obj.getInt("precio");
-                        int moneda = obj.getInt("moneda");
+                        Integer numero_banios = obj.getInt("numero_banios");
+                        Integer numero_habitaciones = obj.getInt("numero_habitaciones");
+                        Integer precio = obj.getInt("precio");
+                        Integer moneda = obj.getInt("moneda");
                         double lat = obj.getDouble("lat");
                         double lng = obj.getDouble("lng");
                         String descripcion = obj.getString("descripcion");
@@ -68,14 +69,11 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
                             urllist.add(DataApp.HOST + listGallery.getString(j));
                         }
 
-                        DataApp.LISTDATA.add(new ItemMenuStructure(estado, descripcion, "",
-                                "", "", numero_banios, numero_habitaciones, 0,
-                                0, "", "",
-                                "", "", "", "", precio, precio, moneda,
-                                "", "",
-                                "", lat, lng, "", "",
-                                0, 0,
-                                "", "", id, urllist));
+                        DataApp.LISTDATA.add(new ItemMenuStructure(estado, descripcion,"",urllist, "","",
+                                "",numero_banios,numero_habitaciones,0,0,"","",
+                                "","","","",precio,moneda,"",""
+                                ,"",lat,lng,"","",0,0,
+                                "",id));
                     }
                     LoadComponents();
                 } catch (JSONException e) {
@@ -87,7 +85,7 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
     private void LoadComponents () {
 
         ListView list = (ListView) ROOT.findViewById(R.id.superlista);
-        MenuBaseAdapter adapter = new MenuBaseAdapter(this.getActivity(), DataApp.LISTDATA);
+        MenuBaseAdapter adapter = new MenuBaseAdapter(this.getActivity(),DataApp.LISTDATA);
         list.setAdapter(adapter);
         this.event.OnLodCompleteDataResult();
         list.setOnItemClickListener(this);
@@ -96,7 +94,7 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent detaild = new Intent(this.getActivity(), DetallesPost.class);
+        Intent detaild = new Intent(this.getActivity(), DetallesCasa.class);
         detaild.putExtra("id", position);
         this.getActivity().startActivity(detaild);
     }
