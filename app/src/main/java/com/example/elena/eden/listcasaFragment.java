@@ -46,9 +46,7 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
     }
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
-
-        client.get(DataApp.REST_USER_POST, new JsonHttpResponseHandler() {
-
+        client.get("http://192.168.1.109:7777/api/vo1.0/propiedad", new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -70,6 +68,7 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
                         for (int j = 0; j < listGallery.length(); j ++) {
                             urllist.add(DataApp.HOST + listGallery.getString(j));
                         }
+
                         DataApp.LISTDATA.add(new ItemMenuStructure(estado, descripcion,"",urllist, "","",
                                 "",numero_banios,numero_habitaciones,0,0,"","",
                                 "","","","",precio,moneda,"",""

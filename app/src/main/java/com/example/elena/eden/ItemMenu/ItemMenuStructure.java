@@ -43,18 +43,18 @@ public ItemMenuStructure(String estado,
         String amurallado,
         String servicios_basicos,
         String otros,
-        int numero_banios,
-        int numero_habitaciones,
-        int nuemro_cocina,
-        int pisos,
+                         int numero_banios,
+                         int numero_habitaciones,
+                         int nuemro_cocina,
+                         int pisos,
         String elevador,
         String piscina,
         String garaje,
         String amoblado,
         String ubicacion,
         String direccion,
-        int precio,
-        int moneda,
+                         int precio,
+                         int moneda,
         String tipo_vivenda,
         String nombre_zona,
         String nombre_ciudad,
@@ -62,8 +62,8 @@ public ItemMenuStructure(String estado,
         double lng,
         String nombre_dueno,
         String apellido_dueno,
-        int telefono_dueno,
-        int celular_dueno,
+                         int telefono_dueno,
+                         int celular_dueno,
         String email_dueno,
         String id) {
         this.estado = estado;
@@ -118,7 +118,7 @@ public ItemMenuStructure(String estado,
 public void setImg(ArrayList<Bitmap> img) {
         this.img = img;
         }
-public void setPrecio (int p) {
+public void setPrecio (Integer p) {
         this.precio = precio;
         }
 public ArrayList<Bitmap> getImg() {

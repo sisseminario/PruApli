@@ -248,7 +248,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         params.put("amoblado", amoblado);
         params.put("nombre_zona", nombre_zona.getText());
 
-        client.post(DataApp.REST_USER_POST, params, new JsonHttpResponseHandler() {
+        client.post("http://192.168.1.109:7777/api/vo1.0/propiedad", params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

@@ -60,19 +60,19 @@ public class Alquiler_listaFragment extends Fragment {
                         String amurallado = obj.getString("amurallado");
                         String servicios_basicos = obj.getString("servicios_basicos");
                         String otros = obj.getString("otros");
-                        int numero_banios = obj.getInt("numero_banios");
-                        int numero_habitaciones = obj.getInt("numero_habitaciones");
-                        int nuemro_cocina = obj.getInt("nuemro_cocina");
+                        Integer numero_banios = obj.getInt("numero_banios");
+                        Integer numero_habitaciones = obj.getInt("numero_habitaciones");
+                        Integer nuemro_cocina = obj.getInt("nuemro_cocina");
 
-                        int pisos = obj.getInt("pisos");
+                        Integer pisos = obj.getInt("pisos");
                         String elevador = obj.getString("elevador");
                         String piscina = obj.getString("piscina");
                         String  garaje = obj.getString("garaje");
                         String amoblado = obj.getString("amoblado");
                         String ubicacion = obj.getString("ubicacion");
                         String direccion = obj.getString("direccion");
-                        int precio = obj.getInt("precio");
-                        int moneda = obj.getInt("moneda");
+                        Integer precio = obj.getInt("precio");
+                        Integer moneda = obj.getInt("moneda");
                         String tipo_vivenda = obj.getString("tipo_vivenda");
                         String nombre_zona = obj.getString("nombre_zona");
                         String nombre_ciudad = obj.getString("nombre_ciudad");
@@ -80,8 +80,8 @@ public class Alquiler_listaFragment extends Fragment {
                         double lng = obj.getDouble("lng");
                         String nombre_dueno = obj.getString("nombre_dueno");
                         String apellido_dueno = obj.getString("apellido_dueno");
-                        int telefono_dueno = obj.getInt("telefono_dueno");
-                        int celular_dueno = obj.getInt("celular_dueno");
+                        Integer telefono_dueno = obj.getInt("telefono_dueno");
+                        Integer celular_dueno = obj.getInt("celular_dueno");
                         String supterrreno = obj.getString("supterrreno");
                         String email_dueno = obj.getString("email_dueno");
                         String id = obj.getString("_id");
@@ -91,11 +91,11 @@ public class Alquiler_listaFragment extends Fragment {
                             urllist.add(DataApp.HOST + listGallery.getString(j));
                         }
 
-                        DataApp.LISTDATA.add(new ItemMenuStructure(estado, descripcion, amurallado,
-                                servicios_basicos, otros, numero_banios, numero_habitaciones, nuemro_cocina, pisos, elevador, piscina,
-                                garaje, amoblado, ubicacion, direccion, precio, moneda, tipo_vivenda, nombre_zona,
-                                nombre_ciudad, lat, lng, nombre_dueno, apellido_dueno, telefono_dueno, celular_dueno,
-                                supterrreno, email_dueno, id, urllist));
+                        DataApp.LISTDATA.add(new ItemMenuStructure(estado, descripcion,"",urllist, "","",
+                                "",numero_banios,numero_habitaciones,0,0,"","",
+                                "","","","",precio,moneda,"",""
+                                ,"",lat,lng,"","",0,0,
+                                "",id));
                     }
                     LoadComponents();
                 } catch (JSONException e) {
