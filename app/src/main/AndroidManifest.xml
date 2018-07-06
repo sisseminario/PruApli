@@ -7,11 +7,11 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -37,10 +37,6 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/ThemeVenta" />
         <activity
-            android:name=".Alquiler"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/ThemeAlquiler" />
-        <activity
             android:name=".Anticretico"
             android:parentActivityName=".MainActivity"
             android:theme="@style/ThemeAnticretico" />
@@ -65,7 +61,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Mapas"
+            android:name=".MapsActivity"
             android:label="@string/title_activity_mapas" />
         <activity android:name=".LoginActivity" />
         <activity
@@ -86,9 +82,18 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".Registro_casa"
+        <activity
+            android:name=".Registro_casa"
             android:parentActivityName=".Home"
-            android:theme="@style/ThemeHome"></activity>
+            android:theme="@style/ThemeHome" />
+        <activity
+            android:name=".FormActivity"
+            android:label="@string/title_activity_form"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VerVecindarioActivity"
+            android:label="@string/title_activity_ver_vecindario"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

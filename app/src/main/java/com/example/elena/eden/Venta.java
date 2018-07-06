@@ -18,7 +18,7 @@ public class Venta extends AppCompatActivity implements BottomNavigationView.OnN
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         BottomNavigationView navigation = findViewById(R.id.main_nav_v);
         navigation.setOnNavigationItemSelectedListener(this);
-        loadFragment(new Venta_listaFragment());
+        //loadFragment(new Venta_listaFragment());
 
     }
     private boolean loadFragment(Fragment fragment){

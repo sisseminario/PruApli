@@ -39,7 +39,6 @@ public class Contactos extends AppCompatActivity implements  GoogleApiClient.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactos);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         tilNombre = (TextInputLayout) findViewById(R.id.til_nombre);
         tilTelefono = (TextInputLayout) findViewById(R.id.til_telefono);
         tilCorreo = (TextInputLayout) findViewById(R.id.til_correo);
@@ -182,7 +181,7 @@ public class Contactos extends AppCompatActivity implements  GoogleApiClient.OnC
             goMainScreen();
 
         }else {
-           Toast.makeText(this, R.string.not_log_in,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.not_log_in,Toast.LENGTH_SHORT).show();
         }
 
     }

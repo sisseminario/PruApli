@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.elena.eden.DATA.DataApp;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -52,12 +53,12 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                 RequestParams params = new RequestParams();
                 String send = "";
                 //for (int i = 0; i < list_markers.size(); i++) {
-                    LatLng coor = list_markers.getPosition();
-                    send +="{" + coor.latitude + "," +coor.longitude + "} ";
+                LatLng coor = list_markers.getPosition();
+                send +="{" + coor.latitude + "," +coor.longitude + "} ";
                 //}
                 params.put("coor", send);
                 AsyncHttpClient client = new AsyncHttpClient();
-                client.post("http://192.168.43.140:7777/api/vo1.0/sendcoloords", params, new AsyncHttpResponseHandler() {
+                client.post(DataApp.REST_CORDENADAS, params, new AsyncHttpResponseHandler() {
 
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -71,7 +72,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                 });
             }
         });
-       // list_markers = new ArrayList<Marker>();
+        // list_markers = new ArrayList<Marker>();
         FloatingActionButton removeBtn = (FloatingActionButton) findViewById(R.id.remove);
         removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +82,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                     aux.remove();
                     list_markers.remove(list_markers.size()-1);
                 }*/
-               mMap.clear();
+                mMap.clear();
             }
         });
 
@@ -119,7 +120,7 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
     }
     public void loadData(){
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://192.168.43.140:7777/api/vo1.0/getCoors",null , new JsonHttpResponseHandler() {
+        client.get("http://192.168.1.109:7777/api/vo1.0/getCoors",null , new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

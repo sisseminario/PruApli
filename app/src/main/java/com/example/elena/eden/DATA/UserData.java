@@ -7,4 +7,5 @@ public class UserData {
     static public String PHOTOURL;
     static public String NAME;
     static public Bitmap IMG;
+    static public String IDVECINDARIO;
 }

@@ -747,6 +747,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/selction_amoblado" />
 
+
             <EditText
                 android:id="@+id/nombre_zona"
                 android:layout_width="wrap_content"
@@ -760,51 +761,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nombrezona" />
 
-            <Button
-
-                android:id="@+id/boton_cam"
-                android:backgroundTint="@color/darkblue_dark"
-                android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="Camara"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="432dp"
-                app:layout_constraintTop_toBottomOf="@+id/nombre_zona"/>
-
-
 
             <Button
                 android:id="@+id/boton_Mapa"
-                android:backgroundTint="@color/darkblue_dark"
-                android:textColor="@android:color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/darkblue_dark"
+
+                android:textColor="@android:color/white"
                 android:text="Mapa"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.56"
-                tools:layout_editor_absoluteY="432dp"
-                app:layout_constraintTop_toBottomOf="@+id/nombre_zona"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_zona" />
 
             <Button
                 android:id="@+id/guardar"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/darkblue_dark"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Guardar"
+                android:backgroundTint="@color/darkblue_dark"
+                android:text="Introducir Imagen"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/boton_cam"
-                 />
+                app:layout_constraintHorizontal_bias="0.887"
+                app:layout_constraintStart_toEndOf="@+id/boton_Mapa"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_zona" />
 
         </android.support.constraint.ConstraintLayout>
 

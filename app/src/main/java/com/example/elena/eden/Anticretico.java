@@ -15,10 +15,10 @@ public class Anticretico extends AppCompatActivity implements BottomNavigationVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anticretico);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         BottomNavigationView navigation = findViewById(R.id.main_navanti);
         navigation.setOnNavigationItemSelectedListener(this);
-        loadFragment(new Alquiler_listaFragment());
+        // loadFragment(new Alquiler_listaFragment());
 
     }
     private boolean loadFragment(Fragment fragment){
@@ -41,7 +41,7 @@ public class Anticretico extends AppCompatActivity implements BottomNavigationVi
                 fragment =new Anticretico_buscaFragment();
                 break;
             case R.id.lista_id:
-                fragment =new Anticretico_listaFragment();
+
                 break;
             case R.id.mmapa_id:
                 fragment =new Anticretico_mapaFragment();

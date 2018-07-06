@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -47,9 +48,9 @@ import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class Home_camara extends AppCompatActivity implements View.OnClickListener {
-    ImageView IMG_CONTAINER ;
-    private final String CARPETA_RAIZ="misImagenesPrueba/";
-    private final String RUTA_IMAGEN=CARPETA_RAIZ+"misFotos";
+    ImageView IMG_CONTAINER;
+    private final String CARPETA_RAIZ = "misImagenesPrueba/";
+    private final String RUTA_IMAGEN = CARPETA_RAIZ + "misFotos";
     private int MEDIA_CODE = 100;
     private int CAMERA_CODE = 101;
     private Context root;
@@ -70,16 +71,16 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
     }
 
     private boolean validaPermisos() {
-        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
 
-        if((checkSelfPermission(CAMERA)== PackageManager.PERMISSION_GRANTED)&&
-                (checkSelfPermission(WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED)){
+        if ((checkSelfPermission(CAMERA) == PackageManager.PERMISSION_GRANTED) &&
+                (checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
             return true;
         }
 
-        requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA},100);
+        requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, CAMERA}, 100);
 
 
         return false;
@@ -87,28 +88,29 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
     }
 
     private void checkPermissionForCameraAndStorage() {
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
             return;
 
         }
-        if (this.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED || this.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED || this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
+        if (this.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED || this.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED || this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             return;
-        }else {
+        } else {
             this.requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 99);
         }
         return;
     }
 
     private void LoadComponents() {
-        Button media = (Button)this.findViewById(R.id.boton_galeria);
-        Button photo = (Button)this.findViewById(R.id.boton_camara);
-        Button upload = (Button)this.findViewById(R.id.boton_enviar);
-        IMG_CONTAINER = (ImageView)this.findViewById(R.id.img_camara);
+        Button media = (Button) this.findViewById(R.id.boton_galeria);
+        Button photo = (Button) this.findViewById(R.id.boton_camara);
+        Button upload = (Button) this.findViewById(R.id.boton_enviar);
+        IMG_CONTAINER = (ImageView) this.findViewById(R.id.img_camara);
         media.setOnClickListener(this);
         photo.setOnClickListener(this);
         upload.setOnClickListener(this);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -116,6 +118,7 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
         return true;
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -134,44 +137,52 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        if(v.getId() == R.id.boton_galeria) {
+        if (v.getId() == R.id.boton_galeria) {
             LoadMediaData();
         }
-        if(v.getId() == R.id.boton_camara) {
+        if (v.getId() == R.id.boton_camara) {
             //tomarFotografia();
             openCameraIntent();
         }
         if (v.getId() == R.id.boton_enviar) {
             try {
                 sendPhoto();
-            } catch(FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
 
         }
 
     }
+
     private void sendPhoto() throws FileNotFoundException {
 
-        if ( IMG_CONTAINER.getDrawable() != null) {
+        if (IMG_CONTAINER.getDrawable() != null) {
             Toast.makeText(root, "container OK", Toast.LENGTH_LONG).show();
             if (imageFilePath != null) {
-                Toast.makeText(root, "error", Toast.LENGTH_LONG).show();
                 File file = new File(imageFilePath);
                 RequestParams params = new RequestParams();
                 params.put("img", file);
                 AsyncHttpClient client = new AsyncHttpClient();
                 if (UserData.ID != null) {
-                    client.post("http://192.168.43.140:7777/api/vo1.0/propiedadimg" + "/" + UserData.ID, params, new JsonHttpResponseHandler(){
+                    client.post(DataApp.REST_USERIMG_POST + "/" + UserData.ID, params, new JsonHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             try {
                                 String path = response.getString("path");
+                                UserData.PHOTOURL = path;
                                 if (path != null) {
-                                    Intent profile = new Intent(root, Profile.class);
-                                    root.startActivity(profile);
+                                    Toast.makeText(root, "Propiedad Registrada con exito", Toast.LENGTH_LONG).show();
+
+                                   /* Intent profile = new Intent(root, Profile.class);
+                                    root.startActivity(profile);*/
+                                    Intent volver_inicio = new Intent(Home_camara.this, Home.class);
+                                    root.startActivity(volver_inicio);
+
+
+                                    Toast.makeText(root, "Propiedad Registrada con exito", Toast.LENGTH_LONG).show();
                                 }
-                            }catch(JSONException json){
+                            } catch (JSONException json) {
                                 Log.i("ERROR", json.getMessage());
                             }
 
@@ -185,8 +196,9 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "No se ha sacado una foto", Toast.LENGTH_LONG).show();
         }
     }
+
     private void LoadMediaData() {
-        Intent media = new Intent(Intent.ACTION_GET_CONTENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent media = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         media.setType("image/");
         startActivityForResult(media.createChooser(media, "Escoja la Aplicacion"), MEDIA_CODE);
     }
@@ -207,6 +219,7 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
         imageFilePath = image.getAbsolutePath();
         return image;
     }
+
     private static final int REQUEST_CAPTURE_IMAGE = 100;
 
     private void openCameraIntent() {
@@ -220,6 +233,7 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
         }
         startActivityForResult(camera, CAMERA_CODE);
     }
+
     private File createFile() {
         //Logica de creado
         File file = new File(Environment.getExternalStorageDirectory(), RUTA_IMAGEN);
@@ -229,19 +243,37 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
         //generar el nombre
         String name = "";
         if (file.exists()) {
-            name = "IMG_" +System.currentTimeMillis()/1000+ ".jpg";
+            name = "IMG_" + System.currentTimeMillis() / 1000 + ".jpg";
         }
-        imageFilePath = file.getAbsolutePath() +File.separator + name;
+        imageFilePath = file.getAbsolutePath() + File.separator + name;
         File fileimg = new File(imageFilePath);
         return fileimg;
     }
+
+    public static String getRealPathFromURI(Context context, Uri contentURI) {
+        String result = null;
+        Cursor cursor = context.getContentResolver().query(contentURI,
+                null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int idx = cursor
+                    .getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
+    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == MEDIA_CODE) {
             IMG_CONTAINER.setImageURI(data.getData());
-            imageFilePath = data.getDataString();
+
+            imageFilePath = getRealPathFromURI(this,data.getData()) ;///en esta linea ...!
+
         }
         if(requestCode == CAMERA_CODE) {
 

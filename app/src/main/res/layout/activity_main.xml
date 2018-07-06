@@ -23,181 +23,88 @@
                 android:layout_weight="1"
 
                 android:layout_height="match_parent">
+
                 <RelativeLayout
-                    android:id="@+id/hoho"
+                    android:id="@+id/reg"
                     android:layout_width="match_parent"
-                    android:layout_weight="0.65"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.75"
+                    android:background="@color/darkblue_dark"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    android:layout_height="match_parent"
-                    android:background="@color/darkblue_dark">
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="9dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
+
                         <ImageView
-                            android:id="@+id/home"
+                            android:id="@+id/registro"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/ic_home_black_24dp"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
-                            android:padding="8dp"
-                            android:tint="@color/white"/>
+                            android:src="@drawable/ic_registro"
+                            android:tint="@color/white" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/home"
+                            android:layout_below="@+id/registro"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="5dp"
-                            android:text="SUBE TU CASA"
+                            android:text="REGUISTRALA"
                             android:textSize="14sp" />
                     </RelativeLayout>
                 </RelativeLayout>
+
                 <RelativeLayout
-                    android:id="@+id/ven"
+                    android:id="@+id/of"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.55"
+                    android:background="@color/blue"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    android:layout_weight="0.55"
-                    android:layout_height="match_parent"
-                    android:background="@color/blue">
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="9dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true">
+
                         <ImageView
-                            android:id="@+id/venta"
+                            android:id="@+id/oferta"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_centerHorizontal="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
                             android:src="@drawable/venta"
-                            android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
-                            android:padding="8dp"
-                            android:tint="@color/white"/>
+                            android:tint="@color/white" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="VENTA"
-                            android:textSize="14sp"
-                            android:layout_marginTop="5dp"
+                            android:layout_below="@+id/oferta"
                             android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:text="OFERTAS"
 
-                            android:layout_below="@+id/venta"/>
+                            android:textSize="14sp" />
                     </RelativeLayout>
                 </RelativeLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp">
-                <RelativeLayout
-                    android:id="@+id/alqi"
-                    android:layout_width="match_parent"
-                    android:layout_weight="0.50"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:layout_height="match_parent"
-                    android:background="@color/lime_dark">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
-                        <ImageView
-                            android:id="@+id/alquiler"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/alquiler"
-                            android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
-                            android:padding="8dp"
-                            android:tint="@color/white"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ALQUILER"
-                            android:textSize="14sp"
-                            android:layout_marginTop="5dp"
-                            android:layout_centerHorizontal="true"
 
-                            android:layout_below="@+id/alquiler"/>
-                    </RelativeLayout>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/anti"
-                    android:layout_width="match_parent"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:layout_weight="0.55"
-                    android:layout_height="match_parent"
-                    android:background="@color/green">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
-                        <ImageView
-                            android:id="@+id/anticretico"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/anticretico"
-                            android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
-                            android:padding="8dp"
-                            android:tint="@color/white"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ANTICRETICO"
-                            android:textSize="14sp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_below="@+id/anticretico"/>
-                    </RelativeLayout>
-                </RelativeLayout>
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_height="match_parent">
-                <RelativeLayout
-                    android:id="@+id/map"
-                    android:layout_width="match_parent"
-                    android:layout_weight="0.65"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:layout_height="match_parent"
-                    android:background="@color/violeta">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
-                        <ImageView
-                            android:id="@+id/mapas"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/ic_map"
-                            android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
-                            android:padding="8dp"
-                            android:tint="@color/white"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="MAPA"
-                            android:textSize="14sp"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="5dp"
-                            android:layout_below="@+id/mapas"/>
-                    </RelativeLayout>
-                </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/cont"
                     android:layout_width="match_parent"
@@ -205,7 +112,9 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:layout_weight="0.55"
                     android:layout_height="match_parent"
-                    android:background="@color/darvioleta">
+                    android:background="@color/darvioleta"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginRight="9dp">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -218,7 +127,6 @@
                             android:src="@drawable/ic_users"
                             android:adjustViewBounds="true"
                             android:scaleType="centerInside"
-                            android:padding="8dp"
                             android:tint="@color/white"/>
                         <TextView
                             android:layout_width="wrap_content"
@@ -230,9 +138,47 @@
                             android:layout_below="@+id/contactos"/>
                     </RelativeLayout>
                 </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/maapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.65"
+                    android:background="@color/violeta"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginLeft="9dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <ImageView
+                            android:id="@+id/mapa"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_centerHorizontal="true"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_map"
+                            android:tint="@color/white" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/mapa"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:text="GEOLOCALIZACION"
+
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

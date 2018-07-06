@@ -97,7 +97,7 @@ public class Venta_listaFragment extends Fragment {
                             urllist.add(DataApp.HOST + listGallery.getString(j));
                         }
 
-                        DataApp.LISTDATA.add(new ItemMenuStructure(vender_alqui_anticre, estado, descripcion, amurallado,
+                        DataApp.LISTDATA.add(new ItemMenuStructure(estado, descripcion, amurallado,
                                 servicios_basicos, otros, numero_banios, numero_habitaciones, nuemro_cocina, pisos, elevador, piscina,
                                 garaje, amoblado, ubicacion, direccion, precio, precio, moneda, tipo_vivenda, nombre_zona,
                                 nombre_ciudad, lat, lng, nombre_dueno, apellido_dueno, telefono_dueno, celular_dueno,

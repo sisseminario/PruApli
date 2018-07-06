@@ -1,33 +1,33 @@
 package com.example.elena.eden;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.Button;
-        import android.widget.CheckBox;
-        import android.widget.RadioGroup;
-        import android.widget.Spinner;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import com.example.elena.eden.DATA.DataApp;
-        import com.example.elena.eden.DATA.UserData;
-        import com.loopj.android.http.AsyncHttpClient;
-        import com.loopj.android.http.JsonHttpResponseHandler;
-        import com.loopj.android.http.RequestParams;
+import com.example.elena.eden.DATA.DataApp;
+import com.example.elena.eden.DATA.UserData;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.util.Map;
+import java.util.Map;
 
-        import cz.msebera.android.httpclient.Header;
-        import cz.msebera.android.httpclient.client.HttpClient;
-        import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
 
 public class Registro_casa extends AppCompatActivity implements View.OnClickListener {
 
@@ -70,13 +70,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             }
         });
         guardar = (Button) this.findViewById(R.id.guardar);
-        guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent camara = new Intent(Registro_casa.this, Home_camara.class);
-                startActivity(camara);
-            }
-        });
+        guardar.setOnClickListener(this);
 
         ///
 
@@ -254,14 +248,14 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         params.put("amoblado", amoblado);
         params.put("nombre_zona", nombre_zona.getText());
 
-        client.post("http://192.168.43.140:7777/api/vo1.0/propiedad", params, new JsonHttpResponseHandler() {
+        client.post(DataApp.REST_USER_POST, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     String msn = response.getString("msn");
                     String id = response.getString("id");
                     UserData.ID = id;
-                    if (msn != null) {
+                    if (id != null) {
                         Intent camera = new Intent(root, Home_camara.class);
                         root.startActivity(camera);
                     } else {
