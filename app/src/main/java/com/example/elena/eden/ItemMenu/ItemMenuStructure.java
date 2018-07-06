@@ -40,7 +40,7 @@ public class ItemMenuStructure {
                              String amurallado, String servicios_basicos, String otros,
                              int numero_banios, int numero_habitaciones, int nuemro_cocina, int pisos,
                              String elevador, String piscina, String garaje, String amoblado,
-                             String ubicacion, String direccion, int precio, int precio1,
+                             String ubicacion, String direccion, int precio,
                              int moneda, String tipo_vivenda, String nombre_zona,
                              String nombre_ciudad, double lat, double lng,
                              String nombre_dueno, String apellido_dueno, int telefono_dueno,

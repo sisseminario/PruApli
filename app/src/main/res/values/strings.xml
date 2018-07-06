@@ -45,6 +45,7 @@
     <string name="title_activity_detalles_casa">DetallesCasa</string>
     <string name="title_activity_form">FormActivity</string>
     <string name="title_activity_ver_vecindario">VerVecindarioActivity</string>
+    <string name="title_activity_profile">Profile</string>
 
 
 </resources>

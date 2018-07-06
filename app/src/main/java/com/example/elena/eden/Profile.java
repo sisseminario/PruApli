@@ -44,7 +44,7 @@ public class Profile extends AppCompatActivity implements OnLoadCompleImg {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    JSONArray data = response.getJSONArray("avatars");
+                    JSONArray data = response.getJSONArray("gallery");
                     String photo = data.getString(0);
                     UserData.PHOTOURL = photo;
                     if (UserData.IMG == null) {
@@ -54,7 +54,6 @@ public class Profile extends AppCompatActivity implements OnLoadCompleImg {
                     }
 
                     String nombre_dueno = response.getString("nombre_dueno");
-                    UserData.NAME = nombre_dueno;
                     String estado = response.getString("estado");
                     String apellidos_dueno = response.getString("apellidos_dueno");
                     String telefono_dueno = response.getString("telefono_dueno");
@@ -92,7 +91,7 @@ public class Profile extends AppCompatActivity implements OnLoadCompleImg {
                 }
             }
 
-            });
+        });
     }
 
     private void LoadComponents() {
