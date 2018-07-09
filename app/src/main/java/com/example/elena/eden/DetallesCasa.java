@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.example.elena.eden.DATA.DataApp;
 import com.example.elena.eden.DETALLES.Detalles_casa;
@@ -36,11 +37,13 @@ public class DetallesCasa extends AppCompatActivity {
         setContentView(R.layout.activity_detalles_casa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        root = this;
+        idCasa = this.getIntent().getExtras().getString("id");
 
         LoadDesta();
         loadAsyncData();
         //ID= this.getIntent().getExtras().getInt("id");
-        idCasa = this.getIntent().getExtras().getString("id");
+
         Toast.makeText(root, idCasa, Toast.LENGTH_SHORT).show();
         //id= this.getIntent().getExtras().getString("id");
     }
@@ -48,7 +51,8 @@ public class DetallesCasa extends AppCompatActivity {
 
     private void loadAsyncData() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(DataApp.HOST +"/api/v1.0/home/" +idCasa,
+        Log.i("RUTA DE LA CASA",DataApp.HOST +"api/vo1.0/propiedad/" +idCasa);
+        client.get(DataApp.HOST +"api/vo1.0/propiedad/" +idCasa,
                 new JsonHttpResponseHandler(){
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -62,7 +66,7 @@ public class DetallesCasa extends AppCompatActivity {
                             String otros = response.getString("otros");
                             int numero_banios = response.getInt("  numero_banios");
                             int numero_habitaciones = response.getInt("numero_habitaciones");
-                            int nuemro_cocina = response.getInt("nuemro_cocina");
+                            //int nuemro_cocina = response.getInt("nuemro_cocina");
                             int pisos = response.getInt("pisos");
                             String elevador = response.getString("elevador");
                             String piscina = response.getString("piscina");
@@ -80,7 +84,7 @@ public class DetallesCasa extends AppCompatActivity {
                             int celular_dueno = response.getInt("celular_dueno");
                             String email_dueno = response.getString("email_dueno");
                             DATA = new Detalles_casa("",descripcion, supterreno, amurallado, servicios_basicos, otros, numero_banios,
-                                    numero_habitaciones, nuemro_cocina, pisos, elevador, piscina, garaje, amoblado, direccion, precio, moneda, tipo_vivenda, nombre_zona,
+                                    numero_habitaciones, 1, pisos, elevador, piscina, garaje, amoblado, direccion, precio, moneda, tipo_vivenda, nombre_zona,
                                     nombre_ciudad, nombre_dueno, apellido_dueno, telefono_dueno, celular_dueno, email_dueno);
 
                             root.setInformation();
@@ -97,24 +101,24 @@ public class DetallesCasa extends AppCompatActivity {
         this.amu.setText(DATA.getAmurallado());
         this.ser_ba.setText(DATA.getServicios_basicos());
         this.otr.setText(DATA.getOtros());
-        this.n_ba.setText(DATA.getNumero_banios());
-        this.n_co.setText(DATA.getNumero_banios());
-        this.nu_ha.setText(DATA.getNumero_habitaciones());
+        this.n_ba.setText(String.valueOf(DATA.getNumero_banios()));
+        this.n_co.setText(String.valueOf(DATA.getNumero_banios()));
+        this.nu_ha.setText(String.valueOf(DATA.getNumero_habitaciones()));
         this.ele.setText(DATA.getElevador());
         this.pic.setText(DATA.getPiscina());
         this.ga.setText(DATA.getGaraje());
         this.amo.setText(DATA.getAmoblado());
         this.dire.setText(DATA.getDireccion());
-        this.prec.setText(DATA.getPrecio());
-        this.mon.setText(DATA.getMoneda());
+        this.prec.setText(String.valueOf(DATA.getPrecio()));
+        this.mon.setText(String.valueOf(DATA.getMoneda()));
         this.t_vi.setText(DATA.getTipo_vivenda());
         this.zo.setText(DATA.getNombre_zona());
         this.ciu.setText(DATA.getNombre_ciudad());
         this.n_du.setText(DATA.getNombre_dueno());
         this.a_du.setText(DATA.getApellido_dueno());
-        this.tef_d.setText(DATA.getTelefono_dueno());
-        this.cel_d.setText(DATA.getCelular_dueno());
-        this.pi.setText(DATA.getPisos());
+        this.tef_d.setText(String.valueOf(DATA.getTelefono_dueno()));
+        this.cel_d.setText(String.valueOf(DATA.getCelular_dueno()));
+        this.pi.setText(String.valueOf(DATA.getPisos()));
         this.ema_d.setText(DATA.getEmail_dueno());
 
     }
@@ -123,9 +127,9 @@ public class DetallesCasa extends AppCompatActivity {
         this.est=(TextView)this.findViewById(R.id.est);
         this.des=(TextView)this.findViewById(R.id.detal);
         this.amu=(TextView)this.findViewById(R.id.amurrallado);
-        this.ser_ba=(TextView)this.findViewById(R.id.servicios_b);
+        this.ser_ba=(TextView)findViewById(R.id.servicios_basicos);
         this.otr=(TextView)this.findViewById(R.id.otros);
-        this.n_ba=(TextView)this.findViewById(R.id.num_banios);
+        this.n_ba=this.findViewById(R.id.numero_banios);
         this.n_co=(TextView)this.findViewById(R.id.nuemro_cocinas);
         this.nu_ha=(TextView)this.findViewById(R.id.numero_habitaciones);
         this.ele=(TextView)this.findViewById(R.id.elevador);

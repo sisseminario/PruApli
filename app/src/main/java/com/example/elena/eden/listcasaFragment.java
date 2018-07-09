@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.elena.eden.DATA.DataApp;
 import com.example.elena.eden.ItemMenu.ItemMenuStructure;
@@ -96,7 +97,8 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent detaild = new Intent(this.getActivity(), DetallesCasa.class);
-        detaild.putExtra("id", position);
+        detaild.putExtra("id", DataApp.LISTDATA.get(position).getId());
+        Toast.makeText(getContext(), DataApp.LISTDATA.get(position).getId(), Toast.LENGTH_SHORT).show();
         this.getActivity().startActivity(detaild);
     }
 }

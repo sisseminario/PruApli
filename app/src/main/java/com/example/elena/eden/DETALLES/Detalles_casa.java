@@ -56,102 +56,102 @@ public class Detalles_casa {
     }
 
     public String getEstado() {
-        return estado;
+        return  this.estado;
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return this.descripcion;
     }
 
     public String getSupterreno() {
-        return supterreno;
+        return this.supterreno;
     }
 
     public String getAmurallado() {
-        return amurallado;
+        return this.amurallado;
     }
 
     public String getServicios_basicos() {
-        return servicios_basicos;
+        return this.servicios_basicos;
     }
 
     public String getOtros() {
-        return otros;
+        return this.otros;
     }
 
     public int getNumero_banios() {
-        return numero_banios;
+        return this.numero_banios;
     }
 
     public int getNumero_habitaciones() {
-        return numero_habitaciones;
+        return this.numero_habitaciones;
     }
 
     public int getNuemro_cocina() {
-        return nuemro_cocina;
+        return this.nuemro_cocina;
     }
 
     public int getPisos() {
-        return pisos;
+        return this.pisos;
     }
 
     public String getElevador() {
-        return elevador;
+        return this.elevador;
     }
 
     public String getPiscina() {
-        return piscina;
+        return this.piscina;
     }
 
     public String getGaraje() {
-        return garaje;
+        return this.garaje;
     }
 
     public String getAmoblado() {
-        return amoblado;
+        return this.amoblado;
     }
 
     public String getDireccion() {
-        return direccion;
+        return this.direccion;
     }
 
     public int getPrecio() {
-        return precio;
+        return this.precio;
     }
 
     public int getMoneda() {
-        return moneda;
+        return this.moneda;
     }
 
     public String getTipo_vivenda() {
-        return tipo_vivenda;
+        return this.tipo_vivenda;
     }
 
     public String getNombre_zona() {
-        return nombre_zona;
+        return this.nombre_zona;
     }
 
     public String getNombre_ciudad() {
-        return nombre_ciudad;
+        return this.nombre_ciudad;
     }
 
     public String getNombre_dueno() {
-        return nombre_dueno;
+        return this.nombre_dueno;
     }
 
     public String getApellido_dueno() {
-        return apellido_dueno;
+        return this.apellido_dueno;
     }
 
     public int getTelefono_dueno() {
-        return telefono_dueno;
+        return this.telefono_dueno;
     }
 
     public int getCelular_dueno() {
-        return celular_dueno;
+        return this.celular_dueno;
     }
 
     public String getEmail_dueno() {
-        return email_dueno;
+        return this.email_dueno;
     }
 }
