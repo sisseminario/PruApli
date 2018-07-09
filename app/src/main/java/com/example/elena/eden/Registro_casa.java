@@ -40,7 +40,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
     private boolean isFirstTime = true;
 
     Button camara;
-    Button mapa;
+
     private Context root;
     Button guardar;
 
@@ -61,14 +61,6 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
             }
         });
 */
-        mapa = (Button) findViewById(R.id.boton_Mapa);
-        mapa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mapa = new Intent(Registro_casa.this, Home_mapa.class);
-                startActivity(mapa);
-            }
-        });
         guardar = (Button) this.findViewById(R.id.guardar);
         guardar.setOnClickListener(this);
 

@@ -40,7 +40,7 @@ public class Profile extends AppCompatActivity implements OnLoadCompleImg {
 
     private void LoadExternalData() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://192.168.1.109:7777/api/vo1.0/propiedad" + "/" + UserData.ID, new  JsonHttpResponseHandler(){
+        client.get(DataApp.REST_USER_POST + "/" + UserData.ID, new  JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

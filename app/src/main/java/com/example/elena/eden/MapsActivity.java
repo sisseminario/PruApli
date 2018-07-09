@@ -72,6 +72,11 @@ public class MapsActivity extends FragmentActivity implements View.OnClickListen
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        LatLng potosi = new LatLng(-19.5722805, -65.7550063);
+        mMap.addMarker(new MarkerOptions().position(potosi).title("Marker in Potosi"));
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(potosi, 8));
+        mMap.setOnMapClickListener(this);
         UiSettings uiSetting = mMap.getUiSettings();
 
         //mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
@@ -91,19 +96,18 @@ public class MapsActivity extends FragmentActivity implements View.OnClickListen
         }
         mMap.setMyLocationEnabled(true);
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+       // LatLng sydney = new LatLng(-34, 151);
 
         //mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         // Add a marker in Sydney and move the camera
-        LatLng potosi = new LatLng(-19.5722805, -65.7550063);
-        mMap.addMarker(new MarkerOptions().position(potosi).title("Marker in Potosi"));
 
-        CameraPosition cameraPosition = CameraPosition.builder()
+
+        /*CameraPosition cameraPosition = CameraPosition.builder()
                 .target(potosi)
                 .zoom(15)
-                .build();
+                .build();*/
 
-        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+       // mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));

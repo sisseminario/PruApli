@@ -51,8 +51,12 @@ public class DetallesCasa extends AppCompatActivity {
 
     private void loadAsyncData() {
         AsyncHttpClient client = new AsyncHttpClient();
+<<<<<<< HEAD
         Log.i("RUTA DE LA CASA",DataApp.HOST +"api/vo1.0/propiedad/" +idCasa);
         client.get(DataApp.HOST +"api/vo1.0/propiedad/" +idCasa,
+=======
+        client.get(DataApp.REST_USER_POST +idCasa,
+>>>>>>> 69be4344f0226f74f99097d771cae5527facac37
                 new JsonHttpResponseHandler(){
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 

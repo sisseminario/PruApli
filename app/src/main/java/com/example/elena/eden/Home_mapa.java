@@ -1,8 +1,11 @@
 package com.example.elena.eden;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.elena.eden.DATA.DataApp;
+import com.example.elena.eden.DATA.UserData;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -39,37 +43,41 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
     private TextView txt_view;
     private Boolean isInadd = false;
     private Marker list_markers;
+    private double sendlat;
+    private double sendlng;
+    private Context root;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        root = this;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_mapa);
 
         txt_view = (TextView)this.findViewById(R.id.txt);
         FloatingActionButton storeBtn = (FloatingActionButton)this.findViewById(R.id.store);
-        loadData();
         storeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 RequestParams params = new RequestParams();
-                String send = "";
-                //for (int i = 0; i < list_markers.size(); i++) {
                 LatLng coor = list_markers.getPosition();
-                send +="{" + coor.latitude + "," +coor.longitude + "} ";
-                //}
-                params.put("coor", send);
+                sendlat = coor.latitude;
+                sendlng = coor.longitude;
+                params.put("lat", sendlat);
+                params.put("lng", sendlng);
                 AsyncHttpClient client = new AsyncHttpClient();
-                client.post(DataApp.REST_CORDENADAS, params, new AsyncHttpResponseHandler() {
+                if (UserData.ID != null) {
+                    client.patch(DataApp.REST_USER_POST + "/" + UserData.ID, params, new JsonHttpResponseHandler() {
+                        @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            Intent volver_inicio = new Intent(Home_mapa.this, Home.class);
+                            root.startActivity(volver_inicio);
+                            Toast.makeText(root, "latitud y longitud registrados con exito", Toast.LENGTH_LONG).show();
+                        }
 
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        showToast();
-                    }
+                    });
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        errorToas();
-                    }
-                });
+                }
             }
         });
         // list_markers = new ArrayList<Marker>();
@@ -77,11 +85,6 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
         removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* if (list_markers.size() > 0) {
-                    Marker aux =  list_markers.get(list_markers.size()-1);
-                    aux.remove();
-                    list_markers.remove(list_markers.size()-1);
-                }*/
                 mMap.clear();
             }
         });
@@ -96,9 +99,6 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                     isInadd = true;
                 }
                 upDateMsnText();
-
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
             }
         });
 
@@ -107,50 +107,12 @@ public class Home_mapa extends FragmentActivity implements OnMapReadyCallback, G
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
-    public void errorToas(){
-        Toast.makeText(this,"ERROR!! ", Toast.LENGTH_SHORT).show();
-    }
-    public void showToast(){ Toast.makeText(this,"Se inserto con éxito ", Toast.LENGTH_SHORT).show(); }
     public void upDateMsnText () {
         if (isInadd == true) {
             txt_view.setText("Add Mark");
         }else {
             txt_view.setText("");
         }
-    }
-    public void loadData(){
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get("http://192.168.1.109:7777/api/vo1.0/getCoors",null , new JsonHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // If the response is JSONObject instead of expected JSONArray
-
-
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-                // Pull out the first event on the public timeline
-                JSONArray aux = timeline;
-                ArrayList<LatLng> list_lat = new ArrayList<LatLng>();
-                for (int i = 0; i < aux.length(); i++) {
-                    try {
-                        JSONObject obj = aux.getJSONObject(i);
-                        double lat = Double.parseDouble(obj.get("lat").toString());
-                        double lng = Double.parseDouble(obj.get("lng").toString());
-                        list_lat.add(new LatLng(lat, lng));
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-                for (int i = 0; i < list_lat.size(); i++) {
-                    setMark(list_lat.get(i));
-                }
-            }
-        });
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {

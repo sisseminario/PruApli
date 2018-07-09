@@ -763,21 +763,6 @@
 
 
             <Button
-                android:id="@+id/boton_Mapa"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/darkblue_dark"
-
-                android:textColor="@android:color/white"
-                android:text="Mapa"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nombre_zona" />
-
-            <Button
                 android:id="@+id/guardar"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
@@ -786,14 +771,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:backgroundTint="@color/darkblue_dark"
-                android:text="Introducir Imagen"
+                android:text="Introducir Imagen o Fotografia "
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.887"
-                app:layout_constraintStart_toEndOf="@+id/boton_Mapa"
-                app:layout_constraintTop_toBottomOf="@+id/nombre_zona" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_zona"
+                app:layout_constraintVertical_bias="0.8" />
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>

@@ -43,18 +43,18 @@ public ItemMenuStructure(String estado,
         String amurallado,
         String servicios_basicos,
         String otros,
-        int numero_banios,
-        int numero_habitaciones,
-        int nuemro_cocina,
-        int pisos,
+                         int numero_banios,
+                         int numero_habitaciones,
+                         int nuemro_cocina,
+                         int pisos,
         String elevador,
         String piscina,
         String garaje,
         String amoblado,
         String ubicacion,
         String direccion,
-        int precio,
-        int moneda,
+                         int precio,
+                         int moneda,
         String tipo_vivenda,
         String nombre_zona,
         String nombre_ciudad,
@@ -62,8 +62,8 @@ public ItemMenuStructure(String estado,
         double lng,
         String nombre_dueno,
         String apellido_dueno,
-        int telefono_dueno,
-        int celular_dueno,
+                         int telefono_dueno,
+                         int celular_dueno,
         String email_dueno,
         String id) {
         this.estado = estado;
@@ -99,26 +99,10 @@ public ItemMenuStructure(String estado,
         }
 
 
-   /* public ItemMenuStructure (String estado, String urlimg, int price, double lat, double lon,
-                              int supterreno, String amurallado, String servicios_basicos,
-                              String otros,String id, String description) {
-        this.estado = estado;
-        this.url = urlimg;
-        this.price = price;
-        this.lat = lat;
-        this.lon = lon;
-        this.supterreno=supterreno;
-        this.amurallado=amurallado;
-        this.servicios_basicos=servicios_basicos;
-        this.otros= otros;
-        this.city = city;
-        this.id = id;
-        this.description = description;
-    }*/
 public void setImg(ArrayList<Bitmap> img) {
         this.img = img;
         }
-public void setPrecio (int p) {
+public void setPrecio (Integer p) {
         this.precio = precio;
         }
 public ArrayList<Bitmap> getImg() {

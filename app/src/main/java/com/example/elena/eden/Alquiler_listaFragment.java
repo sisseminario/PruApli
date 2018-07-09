@@ -1,15 +1,12 @@
 package com.example.elena.eden;
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.elena.eden.DATA.DataApp;
 import com.example.elena.eden.ItemMenu.ItemMenuStructure;
@@ -26,19 +23,21 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-public class listcasaFragment extends Fragment implements AdapterView.OnItemClickListener {
-    /*private ArrayList<ItemMenuStructure> LISTDATA;*/
 
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class Alquiler_listaFragment extends Fragment {
 
-    private View ROOT;
+    private  View ROOT;
     private OnLoadDataComplete event;
 
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,@NonNull ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        DataApp.LISTDATA =new ArrayList<ItemMenuStructure>();
-        ROOT= inflater.inflate(R.layout.listarcasa_fragment, container, false);
+        DataApp.LISTDATA = new ArrayList<ItemMenuStructure>();
+       // ROOT = inflater.inflate(R.layout.fragment_alquiler_lista, container, false);
         loadData();
         return ROOT;
     }
@@ -47,24 +46,46 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
     }
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
+        ///aqui se pone para el servicio
         client.get(DataApp.REST_USER_POST, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                ////aqui servicio
                 try {
                     JSONArray listData = response.getJSONArray("info");
                     for (int i = 0; i < listData.length(); i++) {
                         JSONObject obj = listData.getJSONObject(i);
                         String estado = obj.getString("estado");
+                        String descripcion = obj.getString("descripcion");
+                        String amurallado = obj.getString("amurallado");
+                        String servicios_basicos = obj.getString("servicios_basicos");
+                        String otros = obj.getString("otros");
                         Integer numero_banios = obj.getInt("numero_banios");
                         Integer numero_habitaciones = obj.getInt("numero_habitaciones");
+                        Integer nuemro_cocina = obj.getInt("nuemro_cocina");
+
+                        Integer pisos = obj.getInt("pisos");
+                        String elevador = obj.getString("elevador");
+                        String piscina = obj.getString("piscina");
+                        String  garaje = obj.getString("garaje");
+                        String amoblado = obj.getString("amoblado");
+                        String ubicacion = obj.getString("ubicacion");
+                        String direccion = obj.getString("direccion");
                         Integer precio = obj.getInt("precio");
                         Integer moneda = obj.getInt("moneda");
+                        String tipo_vivenda = obj.getString("tipo_vivenda");
+                        String nombre_zona = obj.getString("nombre_zona");
+                        String nombre_ciudad = obj.getString("nombre_ciudad");
                         double lat = obj.getDouble("lat");
                         double lng = obj.getDouble("lng");
-                        String descripcion = obj.getString("descripcion");
+                        String nombre_dueno = obj.getString("nombre_dueno");
+                        String apellido_dueno = obj.getString("apellido_dueno");
+                        Integer telefono_dueno = obj.getInt("telefono_dueno");
+                        Integer celular_dueno = obj.getInt("celular_dueno");
+                        String supterrreno = obj.getString("supterrreno");
+                        String email_dueno = obj.getString("email_dueno");
                         String id = obj.getString("_id");
-                        // String url = DataApp.HOST + (String)obj.getJSONArray("gallery").get(0);
-                        JSONArray listGallery = obj.getJSONArray("gallery");
+                        String url = (String)obj.getJSONArray("gallery").get(0);JSONArray listGallery = obj.getJSONArray("gallery");
                         ArrayList<String> urllist =  new ArrayList<String>();
                         for (int j = 0; j < listGallery.length(); j ++) {
                             urllist.add(DataApp.HOST + listGallery.getString(j));
@@ -85,25 +106,9 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
     }
     private void LoadComponents () {
 
-        ListView list = (ListView) ROOT.findViewById(R.id.superlista);
-        MenuBaseAdapter adapter = new MenuBaseAdapter(this.getActivity(),DataApp.LISTDATA);
-        list.setAdapter(adapter);
+        //ListView list = (ListView) ROOT.findViewById(R.id.super_lista_alqui);
+        MenuBaseAdapter adapter = new MenuBaseAdapter(this.getActivity(), DataApp.LISTDATA);
+        //list.setAdapter(adapter);
         this.event.OnLodCompleteDataResult();
-        list.setOnItemClickListener(this);
-
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-<<<<<<< HEAD
-        Intent detaild = new Intent(this.getActivity(), DetallesCasa.class);
-        detaild.putExtra("id", DataApp.LISTDATA.get(position).getId());
-        Toast.makeText(getContext(), DataApp.LISTDATA.get(position).getId(), Toast.LENGTH_SHORT).show();
-        this.getActivity().startActivity(detaild);
-=======
-      // Intent detaild = new Intent(this.getActivity(), DetallesPost.class);
-      // detaild.putExtra("id", position);
-      // this.getActivity().startActivity(detaild);
->>>>>>> 69be4344f0226f74f99097d771cae5527facac37
     }
 }

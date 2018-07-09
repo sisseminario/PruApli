@@ -38,14 +38,15 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_casas_listas">CasasListas</string>
     <string name="title_activity_casas_lista">CasasLista</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Ofertas</string>
+    <string name="tab_text_2">Ubicaciones</string>
     <string name="title_activity_maps_list">Map</string>
     <string name="title_activity_detalles_post">DetallesPost</string>
     <string name="title_activity_detalles_casa">DetallesCasa</string>
     <string name="title_activity_form">FormActivity</string>
     <string name="title_activity_ver_vecindario">VerVecindarioActivity</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_home_mapas">Map</string>
 
 
 </resources>
