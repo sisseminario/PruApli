@@ -1,9 +1,10 @@
 package com.example.elena.eden;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,15 +27,13 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-public class listcasaFragment extends Fragment implements AdapterView.OnItemClickListener {
-    /*private ArrayList<ItemMenuStructure> LISTDATA;*/
-
+public class ListcasasFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     private View ROOT;
     private OnLoadDataComplete event;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,@NonNull ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         DataApp.LISTDATA =new ArrayList<ItemMenuStructure>();
@@ -95,15 +94,11 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-<<<<<<< HEAD
+
         Intent detaild = new Intent(this.getActivity(), DetallesCasa.class);
         detaild.putExtra("id", DataApp.LISTDATA.get(position).getId());
         Toast.makeText(getContext(), DataApp.LISTDATA.get(position).getId(), Toast.LENGTH_SHORT).show();
         this.getActivity().startActivity(detaild);
-=======
-      // Intent detaild = new Intent(this.getActivity(), DetallesPost.class);
-      // detaild.putExtra("id", position);
-      // this.getActivity().startActivity(detaild);
->>>>>>> 69be4344f0226f74f99097d771cae5527facac37
+
     }
 }

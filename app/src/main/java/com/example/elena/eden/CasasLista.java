@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -89,7 +90,7 @@ public class CasasLista extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             //return PlaceholderFragment.newInstance(position + 1);
-            listcasaFragment listas =new listcasaFragment();
+            ListcasasFragment listas =new ListcasasFragment();
             listas.setOnloadCompleteData(this);
             masp= new Maspslist_Fragment();
             if(position==0){
@@ -99,7 +100,7 @@ public class CasasLista extends AppCompatActivity {
             if(position ==1){
                 return masp ;
             }
-            return new listcasaFragment();
+            return new ListFragment();
         }
 
         @Override

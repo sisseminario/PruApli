@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,6 +55,21 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Animation traslacion = AnimationUtils.loadAnimation(this,R.anim.traslacion);
+        traslacion.setFillAfter(true);
+        traslacion.setRepeatMode(Animation.REVERSE);
+        traslacion.setRepeatCount(5);
+
+        Animation rotar = AnimationUtils.loadAnimation(this, R.anim.rotar);
+        rotar.setFillAfter(true);
+        rotar.setRepeatMode(Animation.REVERSE);
+        rotar.setRepeatCount(5);
+
+        this.con.startAnimation(traslacion);
+        this.ma.startAnimation(rotar);
+        this.ofer.startAnimation(traslacion);
+        this.reg.startAnimation(rotar);
 
     }
 

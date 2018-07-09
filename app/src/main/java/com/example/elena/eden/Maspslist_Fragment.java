@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Maspslist_Fragment extends Fragment implements OnMapReadyCallback {
     private View ROOT;
     private GoogleMap mMap;
-    private listcasaFragment list;
+    private ListcasasFragment list;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

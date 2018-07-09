@@ -148,7 +148,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         if (radio1.getCheckedRadioButtonId() == R.id.amurrallado_si) {
             amurallado = "Amurallado";
         } else {
-            amurallado = "";
+            amurallado = "no";
         }
 
         CheckBox agua = (CheckBox) this.findViewById(R.id.agua);
@@ -156,28 +156,28 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         if (agua.isChecked()) {
             agua1 = " agua, ";
         } else {
-            agua1 = "";
+            agua1 = "no";
         }
         CheckBox luz = (CheckBox) this.findViewById(R.id.luz);
         String luz1 = "";
         if (luz.isChecked()) {
             luz1 = "luz";
         } else {
-            luz1 = "";
+            luz1 = "no";
         }
         CheckBox gas = (CheckBox) this.findViewById(R.id.gas);
         String gas1 = "";
         if (gas.isChecked()) {
             gas1 = "agua";
         } else {
-            gas1 = "";
+            gas1 = "no";
         }
         CheckBox alcantarillado = (CheckBox) this.findViewById(R.id.alcantarillado);
         String alcantarillado1 = "";
         if (alcantarillado.isChecked()) {
             alcantarillado1 = "alcantarillado1";
         } else {
-            alcantarillado1 = "";
+            alcantarillado1 = "no";
         }
 
         RadioGroup radio2 = (RadioGroup) this.findViewById(R.id.selction_elv);
@@ -185,7 +185,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         if (radio2.getCheckedRadioButtonId() == R.id.si_elev) {
             elevador = "elevador";
         } else {
-            elevador = "";
+            elevador = "no";
         }
 
         RadioGroup radio3 = (RadioGroup) this.findViewById(R.id.selction_piscina);
@@ -193,7 +193,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         if (radio3.getCheckedRadioButtonId() == R.id.si_piscina) {
             piscina = "piscina";
         } else {
-            piscina = "";
+            piscina = "no";
         }
 
         RadioGroup radio4 = (RadioGroup) this.findViewById(R.id.selction_garaje);
@@ -201,7 +201,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         if (radio4.getCheckedRadioButtonId() == R.id.si_garaje) {
             garaje = "garaje";
         } else {
-            garaje = "";
+            garaje = "no";
         }
 
         RadioGroup radio5 = (RadioGroup) this.findViewById(R.id.selction_amoblado);
@@ -209,7 +209,7 @@ public class Registro_casa extends AppCompatActivity implements View.OnClickList
         if (radio5.getCheckedRadioButtonId() == R.id.si_amoblado) {
             amoblado = "amoblado";
         } else {
-            amoblado = "";
+            amoblado = "no";
         }
 
         AsyncHttpClient client = new AsyncHttpClient();

@@ -1,14 +1,15 @@
 package com.example.elena.eden;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.Log;
 
 import com.example.elena.eden.DATA.DataApp;
 import com.example.elena.eden.DETALLES.Detalles_casa;
@@ -28,7 +29,7 @@ public class DetallesCasa extends AppCompatActivity {
     protected TextView est,des, amu,ser_ba,otr,n_ba,n_co,
             nu_ha,pi,ele,pic,ga,amo,dire,prec, mon,t_vi,zo,ciu,n_du,a_du,
             tef_d,cel_d,ema_d;
-    protected DetallesCasa root;
+    protected Context root;
     protected Detalles_casa DATA;
 
     @Override
@@ -39,24 +40,19 @@ public class DetallesCasa extends AppCompatActivity {
         setSupportActionBar(toolbar);
         root = this;
         idCasa = this.getIntent().getExtras().getString("id");
-
         LoadDesta();
         loadAsyncData();
         //ID= this.getIntent().getExtras().getInt("id");
 
-        Toast.makeText(root, idCasa, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, idCasa, Toast.LENGTH_SHORT).show();
         //id= this.getIntent().getExtras().getString("id");
     }
 
 
     private void loadAsyncData() {
         AsyncHttpClient client = new AsyncHttpClient();
-<<<<<<< HEAD
-        Log.i("RUTA DE LA CASA",DataApp.HOST +"api/vo1.0/propiedad/" +idCasa);
-        client.get(DataApp.HOST +"api/vo1.0/propiedad/" +idCasa,
-=======
-        client.get(DataApp.REST_USER_POST +idCasa,
->>>>>>> 69be4344f0226f74f99097d771cae5527facac37
+        Log.i("RUTA DE LA CASA",DataApp.REST_USER_POST + "/" +idCasa);
+        client.get(DataApp.REST_USER_POST + "/" +idCasa,
                 new JsonHttpResponseHandler(){
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -68,7 +64,7 @@ public class DetallesCasa extends AppCompatActivity {
                             String amurallado = response.getString("amurallado");
                             String servicios_basicos = response.getString("servicios_basicos");
                             String otros = response.getString("otros");
-                            int numero_banios = response.getInt("  numero_banios");
+                            int numero_banios = response.getInt("numero_banios");
                             int numero_habitaciones = response.getInt("numero_habitaciones");
                             //int nuemro_cocina = response.getInt("nuemro_cocina");
                             int pisos = response.getInt("pisos");
@@ -79,19 +75,19 @@ public class DetallesCasa extends AppCompatActivity {
                             String direccion = response.getString("direccion");
                             int precio = response.getInt("precio");
                             int moneda = response.getInt("moneda");
-                            String tipo_vivenda = response.getString("tipo_vivenda");
+                            String tipo_vivenda = response.getString("tipo_vivienda");
                             String nombre_zona = response.getString("nombre_zona");
                             String nombre_ciudad = response.getString("nombre_ciudad");
                             String nombre_dueno = response.getString("nombre_dueno");
                             String apellido_dueno = response.getString("apellido_dueno");
-                            int telefono_dueno = response.getInt("telefono_duen");
+                            int telefono_dueno = response.getInt("telefono_dueno");
                             int celular_dueno = response.getInt("celular_dueno");
                             String email_dueno = response.getString("email_dueno");
                             DATA = new Detalles_casa("",descripcion, supterreno, amurallado, servicios_basicos, otros, numero_banios,
                                     numero_habitaciones, 1, pisos, elevador, piscina, garaje, amoblado, direccion, precio, moneda, tipo_vivenda, nombre_zona,
                                     nombre_ciudad, nombre_dueno, apellido_dueno, telefono_dueno, celular_dueno, email_dueno);
 
-                            root.setInformation();
+                            setInformation();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -102,6 +102,12 @@
             android:name=".CasasLista"
             android:label="@string/title_activity_casas_lista"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Listas" />
+        <activity android:name=".ListcasasFragment" />
+        <activity
+            android:name=".DetallesCasa"
+            android:label="@string/title_activity_detalles_casa"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
