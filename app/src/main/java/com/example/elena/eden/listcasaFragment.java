@@ -46,7 +46,7 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
     }
     private void loadData() {
         AsyncHttpClient client = new AsyncHttpClient();
-        client.get(DataApp.HOST+"/api/vo1.0/propiedad/", new JsonHttpResponseHandler() {
+        client.get(DataApp.REST_USER_POST, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -94,8 +94,8 @@ public class listcasaFragment extends Fragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       // Intent detaild = new Intent(this.getActivity(), DetallesPost.class);
-       // detaild.putExtra("id", position);
-        //this.getActivity().startActivity(detaild);
+      // Intent detaild = new Intent(this.getActivity(), DetallesPost.class);
+      // detaild.putExtra("id", position);
+      // this.getActivity().startActivity(detaild);
     }
 }

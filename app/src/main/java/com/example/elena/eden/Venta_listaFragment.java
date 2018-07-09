@@ -36,7 +36,7 @@ public class Venta_listaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         DataApp.LISTDATA = new ArrayList<ItemMenuStructure>();
-        ROOT = inflater.inflate(R.layout.fragment_venta_lista, container, false);
+       // ROOT = inflater.inflate(R.layout.fragment_venta_lista, container, false);
         loadData();
         return ROOT;
     }
@@ -49,7 +49,7 @@ public class Venta_listaFragment extends Fragment {
         AsyncHttpClient client = new AsyncHttpClient();
         ///aqui se pone para el servicio
 
-        client.get("http://192.168.1.109:7777/api/v1.0/propiedad", new JsonHttpResponseHandler() {
+        client.get(DataApp.REST_USER_POST, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -113,9 +113,9 @@ public class Venta_listaFragment extends Fragment {
 
     private void LoadComponents() {
 
-        ListView list = (ListView) ROOT.findViewById(R.id.super_lista_anti);
+        //ListView list = (ListView) ROOT.findViewById(R.id.super_lista_anti);
         MenuBaseAdapter adapter = new MenuBaseAdapter(this.getActivity(), DataApp.LISTDATA);
-        list.setAdapter(adapter);
+       // list.setAdapter(adapter);
         this.event.OnLodCompleteDataResult();
     }
 }
