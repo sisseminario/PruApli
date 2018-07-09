@@ -172,14 +172,10 @@ public class Home_camara extends AppCompatActivity implements View.OnClickListen
                                 String path = response.getString("path");
                                 UserData.PHOTOURL = path;
                                 if (path != null) {
-                                    Toast.makeText(root, "Propiedad Registrada con exito", Toast.LENGTH_LONG).show();
-
                                    /*Intent profile = new Intent(root, Profile.class);
                                     root.startActivity(profile);*/
-                                   Intent volver_inicio = new Intent(Home_camara.this, Home.class);
+                                    Intent volver_inicio = new Intent(Home_camara.this, Home_mapa.class);
                                     root.startActivity(volver_inicio);
-
-
                                     Toast.makeText(root, "Propiedad Registrada con exito", Toast.LENGTH_LONG).show();
                                 }
                             } catch (JSONException json) {

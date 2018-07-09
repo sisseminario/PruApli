@@ -32,8 +32,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         ROOT =inflater.inflate(R.layout.activity_maps, container, false);
-        //SupportMapFragment mapFragment = (SupportMapFragment)this.getActivity().getSupportFragmentManager().findFragmentById(R.id.map);
-        //mapFragment.getMapAsync(this);
+
 
 
         return ROOT;

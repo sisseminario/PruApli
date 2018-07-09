@@ -99,22 +99,6 @@ public ItemMenuStructure(String estado,
         }
 
 
-   /* public ItemMenuStructure (String estado, String urlimg, int price, double lat, double lon,
-                              int supterreno, String amurallado, String servicios_basicos,
-                              String otros,String id, String description) {
-        this.estado = estado;
-        this.url = urlimg;
-        this.price = price;
-        this.lat = lat;
-        this.lon = lon;
-        this.supterreno=supterreno;
-        this.amurallado=amurallado;
-        this.servicios_basicos=servicios_basicos;
-        this.otros= otros;
-        this.city = city;
-        this.id = id;
-        this.description = description;
-    }*/
 public void setImg(ArrayList<Bitmap> img) {
         this.img = img;
         }
