@@ -44,13 +44,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </android.support.constraint.ConstraintLayout>
 
-            <Button
-                android:id="@+id/buttonfotos"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="70dp"
-                android:background="@color/blue"
-                android:text="FOTOS" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/containerdet"
+                android:layout_width="match_parent"
+                android:layout_height="259dp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -89,6 +87,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
             </android.support.constraint.ConstraintLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -114,7 +113,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Amurallado"
+                    android:text=""
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/textView22"
@@ -125,8 +124,8 @@
                     android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="112dp"
+                    android:layout_marginTop="16dp"
                     android:text="Servicios_B"
                     android:textSize="15dp"
                     android:textStyle="bold"
@@ -242,6 +241,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView32" />
             </android.support.constraint.ConstraintLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -319,6 +319,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView42" />
             </android.support.constraint.ConstraintLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -344,7 +345,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Precio"
+                    android:text="Precio_$"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/textView52"
@@ -357,7 +358,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Moneda"
+                    android:text="Precio_Bs"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -395,6 +396,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView52" />
             </android.support.constraint.ConstraintLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -471,11 +473,13 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView12" />
             </android.support.constraint.ConstraintLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 tools:layout_editor_absoluteX="95dp"
                 tools:layout_editor_absoluteY="439dp">
+
                 <TextView
                     android:id="@+id/textView70"
                     android:layout_width="wrap_content"
@@ -547,11 +551,13 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView72" />
             </android.support.constraint.ConstraintLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 tools:layout_editor_absoluteX="95dp"
                 tools:layout_editor_absoluteY="439dp">
+
                 <TextView
                     android:id="@+id/textView80"
                     android:layout_width="wrap_content"
@@ -623,6 +629,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView82" />
             </android.support.constraint.ConstraintLayout>
+
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -635,7 +642,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Celular"
+                    android:text="Email"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -647,7 +654,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="16dp"
-                    android:text="Email"
+                    android:text="Celular"
                     android:textSize="15dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView90"
