@@ -11,10 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.elena.eden.DATA.DataApp;
+import com.example.elena.eden.DATA.UserData;
 import com.example.elena.eden.DETALLES.Detalles_casa;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -28,6 +30,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class DetallesCasa extends AppCompatActivity {
     private static int ID;
+    Button buttonfotos;
 
 
     private  String idCasa;
@@ -45,12 +48,22 @@ public class DetallesCasa extends AppCompatActivity {
         setSupportActionBar(toolbar);
         root = this;
         idCasa = this.getIntent().getExtras().getString("id");
+        UserData.ID_CASA = idCasa;
         LoadDesta();
         loadAsyncData();
         //ID= this.getIntent().getExtras().getInt("id");
 
         Toast.makeText(this, idCasa, Toast.LENGTH_SHORT).show();
         //id= this.getIntent().getExtras().getString("id");
+
+        buttonfotos = (Button) findViewById(R.id.buttonfotos);
+        buttonfotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent fotos = new Intent(root, DetallesPost.class);
+                root.startActivity(fotos);
+            }
+        });
 
         //LLAMADAS//
 
@@ -79,6 +92,7 @@ public class DetallesCasa extends AppCompatActivity {
         Log.i("RUTA DE LA CASA",DataApp.REST_USER_POST + "/" +idCasa);
         client.get(DataApp.REST_USER_POST + "/" +idCasa,
                 new JsonHttpResponseHandler(){
+
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
                         try {
@@ -173,8 +187,6 @@ public class DetallesCasa extends AppCompatActivity {
         this.cel_d=(TextView)this.findViewById(R.id.cel);
         this.pi=(TextView)this.findViewById(R.id.pisos);
         this.ema_d=(TextView)this.findViewById(R.id.emai_du);
-
-
 
     }
 

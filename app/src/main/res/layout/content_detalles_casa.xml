@@ -45,6 +45,7 @@
             </android.support.constraint.ConstraintLayout>
 
             <Button
+                android:id="@+id/buttonfotos"
                 android:layout_width="145dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="70dp"
@@ -680,7 +681,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
-                android:src="@drawable/ic_phone" />
+                android:src="@drawable/ic_phone"
+                app:backgroundTint="@android:color/holo_blue_dark" />
 
         </LinearLayout>
     </ScrollView>

@@ -8,4 +8,5 @@ public class UserData {
     static public String NAME;
     static public Bitmap IMG;
     static public String IDVECINDARIO;
+    static public String ID_CASA;
 }

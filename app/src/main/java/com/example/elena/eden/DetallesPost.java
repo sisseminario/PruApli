@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.elena.eden.DATA.DataApp;
+import com.example.elena.eden.DATA.UserData;
 import com.example.elena.eden.ItemMenu.LoaderImg;
 import com.example.elena.eden.ItemMenu.OnLoadCompleImg;
 
@@ -43,7 +44,7 @@ public class DetallesPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles_post);
-        ID = this.getIntent().getExtras().getInt("id");
+        // ID = this.getIntent().getExtras().getInt("id");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,7 +92,7 @@ public class DetallesPost extends AppCompatActivity {
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
-            ArrayList<String> info = DataApp.LISTDATA.get(ID).getUrlimg();
+            ArrayList<String> info = DataApp.LISTDATA.get(Integer.parseInt(UserData.ID_CASA)).getUrlimg();
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putString("url", info.get(sectionNumber));
@@ -140,7 +141,7 @@ public class DetallesPost extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return DataApp.LISTDATA.get(ID).getUrlimg().size();
+            return DataApp.LISTDATA.get(Integer.parseInt(UserData.ID_CASA)).getUrlimg().size();
         }
     }
 }

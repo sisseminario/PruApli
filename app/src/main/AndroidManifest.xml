@@ -107,6 +107,10 @@
         <activity
             android:name=".DetallesCasa"
             android:label="@string/title_activity_detalles_casa"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetallesPost"
+            android:label="@string/title_activity_detalles_post"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
