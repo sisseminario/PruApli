@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class DataApp {
     static public ArrayList<ItemMenuStructure> LISTDATA;
-    static public String HOST = "http://192.168.1.12:7777";
+    static public String HOST = "http://192.168.43.127:7777";
     static public String REST_USER_POST = HOST + "/api/vo1.0/propiedad";
     static public String REST_USERIMG_POST = HOST + "/api/vo1.0/propiedadimg";
     static public String REST_HOME_PATCH = HOST + "/api/vo1.0/propiedad";

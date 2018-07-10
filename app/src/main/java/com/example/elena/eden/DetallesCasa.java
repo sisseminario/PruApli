@@ -2,20 +2,30 @@ package com.example.elena.eden;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.elena.eden.DATA.DataApp;
 import com.example.elena.eden.DETALLES.Detalles_casa;
+import com.example.elena.eden.ItemMenu.LoaderImg;
+import com.example.elena.eden.ItemMenu.OnLoadCompleImg;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -28,9 +38,14 @@ import cz.msebera.android.httpclient.Header;
 
 public class DetallesCasa extends AppCompatActivity {
     private static int ID;
+    //view pager
+    private DetallesCasa.SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
+
 
 
     private  String idCasa;
+    private static int position;
     protected TextView est,des, amu,ser_ba,otr,n_ba,n_co,
             nu_ha,pi,ele,pic,ga,amo,dire,prec, mon,t_vi,zo,ciu,n_du,a_du,
             tef_d,cel_d,ema_d;
@@ -45,11 +60,12 @@ public class DetallesCasa extends AppCompatActivity {
         setSupportActionBar(toolbar);
         root = this;
         idCasa = this.getIntent().getExtras().getString("id");
+        position = DetallesCasa.this.getIntent().getExtras().getInt("position");
         LoadDesta();
         loadAsyncData();
         //ID= this.getIntent().getExtras().getInt("id");
 
-        Toast.makeText(this, idCasa, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, idCasa, Toast.LENGTH_SHORT).show();
         //id= this.getIntent().getExtras().getString("id");
 
         //LLAMADAS//
@@ -71,6 +87,12 @@ public class DetallesCasa extends AppCompatActivity {
 
             }
         });
+        //view pager
+        mSectionsPagerAdapter = new DetallesCasa.SectionsPagerAdapter(getSupportFragmentManager());
+
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.containerdet);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
     }
 
 
@@ -176,6 +198,77 @@ public class DetallesCasa extends AppCompatActivity {
 
 
 
+    }
+    public static class PlaceholderFragment extends Fragment implements OnLoadCompleImg {
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+
+        public PlaceholderFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static DetallesCasa.PlaceholderFragment newInstance(int sectionNumber) {
+
+            DetallesCasa.PlaceholderFragment fragment = new DetallesCasa.PlaceholderFragment();
+
+            Bundle args = new Bundle();
+            args.putString("url", DataApp.LISTDATA.get(position).getUrlimg().get(sectionNumber));
+            //args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_detalles_post, container, false);
+            ImageView img = (ImageView)rootView.findViewById(R.id.imagen);
+            String url = this.getArguments().getString("url");
+            LoaderImg loader = new LoaderImg();
+            loader.setOnloadCompleteImg(img, 0, this);
+            loader.execute(url);
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            return rootView;
+        }
+
+        @Override
+        public void OnloadCompleteImgResult(ImageView img, int position, Bitmap imgsourceimg) {
+            img.setImageBitmap(imgsourceimg);
+        }
+    }
+
+    /**
+     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * one of the sections/tabs/pages.
+     */
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
+            //Log.i("SIZE : ",String.valueOf(info.size()));
+            return DetallesCasa.PlaceholderFragment.newInstance(position);
+        }
+
+        @Override
+        public int getCount() {
+            // Show 3 total pages.
+
+            return DataApp.LISTDATA.get(position).getUrlimg().size();
+        }
     }
 
 
